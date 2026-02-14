@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 import { getPageMetadata } from '@/lib/content/pages';
 
 interface AboutPageProps {
@@ -30,6 +31,8 @@ export async function generateMetadata({ params: { locale } }: AboutPageProps): 
 }
 
 export default function AboutPage({ params: { locale } }: AboutPageProps) {
+  setRequestLocale(locale);
+
   return (
     <div className="section-padding">
       <div className="container-custom">

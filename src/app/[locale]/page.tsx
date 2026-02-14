@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 import { getPageMetadata } from '@/lib/content/pages';
 import Hero from '@/components/sections/Hero';
 import TrustBar from '@/components/sections/TrustBar';
@@ -48,7 +49,9 @@ export async function generateMetadata({ params: { locale } }: HomePageProps): P
   };
 }
 
-export default function HomePage() {
+export default function HomePage({ params: { locale } }: HomePageProps) {
+  setRequestLocale(locale);
+
   return (
     <>
       <Hero />

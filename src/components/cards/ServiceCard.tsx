@@ -8,6 +8,7 @@ interface ServiceCardProps {
   description: string;
   href: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export default function ServiceCard({
@@ -16,12 +17,14 @@ export default function ServiceCard({
   description,
   href,
   className = '',
+  style,
 }: ServiceCardProps) {
   const t = useTranslations('common');
 
   return (
     <div
       className={`group relative bg-white rounded-lg border-2 border-border p-8 hover:shadow-lg transition-all duration-smooth overflow-hidden ${className}`}
+      style={style}
     >
       {/* Animated top border on hover */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan to-ocean transform scale-x-0 group-hover:scale-x-100 transition-transform duration-smooth origin-left" />
