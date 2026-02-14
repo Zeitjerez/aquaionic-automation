@@ -26,6 +26,7 @@ const config: Config = {
         'accent-green-light': 'rgba(0,201,167,0.08)',
         'border': 'rgba(10,37,64,0.06)',
         'whatsapp': '#25D366',
+        'whatsapp-hover': '#20BD5A',
       },
       boxShadow: {
         'xs': '0 1px 3px rgba(10,37,64,0.04)',
@@ -35,7 +36,7 @@ const config: Config = {
         'xl': '0 30px 80px rgba(10,37,64,0.14)',
         'cyan': '0 8px 30px rgba(0,188,212,0.25)',
         'whatsapp': '0 8px 28px rgba(37,211,102,0.3)',
-        'whatsapp-pulse': '0 8px 28px rgba(37,211,102,0.5), 0 0 0 10px rgba(37,211,102,0.08)',
+        'whatsapp-pulse': '0 12px 40px rgba(37,211,102,0.6), 0 0 0 0 rgba(37,211,102,0.4)',
       },
       borderRadius: {
         'sm': '10px',
@@ -51,7 +52,8 @@ const config: Config = {
         'drift': 'ambientDrift 25s ease-in-out infinite alternate',
         'drift-reverse': 'ambientDrift 20s ease-in-out infinite alternate-reverse',
         'drift-slow': 'ambientDrift 30s ease-in-out infinite alternate',
-        'whatsapp': 'waPulse 3s ease-in-out infinite',
+        'whatsapp': 'waPulse 2s ease-in-out infinite',
+        'whatsapp-bounce': 'waBounce 2s ease-in-out infinite',
         'fade-up': 'fadeUp 0.6s ease-out',
         'fade-in': 'fadeIn 0.4s ease-out',
         'scale-in': 'scaleIn 0.5s ease-out',
@@ -68,8 +70,18 @@ const config: Config = {
           '100%': { transform: 'translate(-20px,20px) scale(0.95)' },
         },
         waPulse: {
-          '0%, 100%': { boxShadow: '0 8px 28px rgba(37,211,102,0.3)' },
-          '50%': { boxShadow: '0 8px 28px rgba(37,211,102,0.5), 0 0 0 10px rgba(37,211,102,0.08)' },
+          '0%, 100%': {
+            boxShadow: '0 8px 28px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.4)',
+            transform: 'scale(1)',
+          },
+          '50%': {
+            boxShadow: '0 12px 40px rgba(37,211,102,0.6), 0 0 0 8px rgba(37,211,102,0.15)',
+            transform: 'scale(1.05)',
+          },
+        },
+        waBounce: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
         fadeUp: {
           from: { opacity: '0', transform: 'translateY(24px)' },

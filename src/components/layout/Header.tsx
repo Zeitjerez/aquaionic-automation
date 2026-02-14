@@ -32,16 +32,16 @@ export default function Header({ className = '' }: HeaderProps) {
   }, [pathname]);
 
   const navItems = [
-    { label: t('nav.home'), href: locale === 'en' ? '/' : '/es/inicio' },
-    { label: t('nav.services'), href: locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo' },
-    { label: t('nav.areas'), href: locale === 'en' ? '/miami' : '/es/miami-es' },
-    { label: t('nav.shop'), href: locale === 'en' ? '/shop' : '/es/tienda' },
-    { label: t('nav.about'), href: locale === 'en' ? '/about' : '/es/nosotros' },
-    { label: t('nav.blog'), href: locale === 'en' ? '/blog' : '/es/blog-es' },
+    { label: t('nav.home'), href: locale === 'en' ? '/en' : '/es' },
+    { label: t('nav.services'), href: locale === 'en' ? '/en/well-water-treatment' : '/es/well-water-treatment' },
+    { label: t('nav.areas'), href: locale === 'en' ? '/en/miami' : '/es/miami' },
+    { label: t('nav.shop'), href: locale === 'en' ? '/en/shop' : '/es/shop' },
+    { label: t('nav.about'), href: locale === 'en' ? '/en/about' : '/es/about' },
+    { label: t('nav.blog'), href: locale === 'en' ? '/en/blog' : '/es/blog' },
   ];
 
   const otherLocale = locale === 'en' ? 'es' : 'en';
-  const switchLocaleUrl = locale === 'en' ? '/es/inicio' : '/';
+  const switchLocaleUrl = locale === 'en' ? '/es' : '/en';
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function Header({ className = '' }: HeaderProps) {
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href={locale === 'en' ? '/' : '/es/inicio'} className="flex items-center gap-3">
+            <Link href={locale === 'en' ? '/en' : '/es'} className="flex items-center gap-3">
               <div className="flex items-center">
                 <span className="text-2xl font-jakarta font-extrabold text-deep-blue tracking-tight">
                   AQUA
@@ -108,7 +108,7 @@ export default function Header({ className = '' }: HeaderProps) {
 
               {/* CTA Button */}
               <Link
-                href={locale === 'en' ? '/water-test' : '/es/prueba-agua'}
+                href={locale === 'en' ? '/en#contact' : '/es#contact'}
                 className="hidden lg:flex btn-primary"
               >
                 {t('cta')}
@@ -182,7 +182,7 @@ export default function Header({ className = '' }: HeaderProps) {
               {/* Footer */}
               <div className="p-6 border-t border-white/10 space-y-3">
                 <Link
-                  href={locale === 'en' ? '/water-test' : '/es/prueba-agua'}
+                  href={locale === 'en' ? '/en#contact' : '/es#contact'}
                   className="block w-full btn-primary text-center"
                 >
                   {t('cta')}
