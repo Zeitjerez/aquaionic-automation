@@ -8,8 +8,8 @@ export default createMiddleware({
   // Default locale
   defaultLocale,
 
-  // Strategy: Always show locale prefix to avoid routing issues
-  localePrefix: 'always',
+  // Strategy: EN without prefix, ES with /es/
+  localePrefix: 'as-needed',
 
   // Alternate links in HTML head
   alternateLinks: true,
