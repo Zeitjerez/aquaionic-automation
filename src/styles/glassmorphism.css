@@ -1,0 +1,123 @@
+/**
+ * Glassmorphism Effects
+ * Backdrop blur and frosted glass effects
+ */
+
+/* Base glassmorphism class */
+.backdrop-glass {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+/* Stronger glass effect */
+.backdrop-glass-strong {
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+/* Lighter glass effect */
+.backdrop-glass-light {
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* Dark glassmorphism */
+.backdrop-glass-dark {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(10, 37, 64, 0.85);
+}
+
+/* Colored glass effects */
+.backdrop-glass-cyan {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(0, 188, 212, 0.12);
+}
+
+.backdrop-glass-ocean {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(26, 82, 118, 0.15);
+}
+
+.backdrop-glass-green {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(0, 201, 167, 0.12);
+}
+
+/* Frosted card */
+.frosted-card {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(10, 37, 64, 0.08);
+  box-shadow: 0 8px 30px rgba(10, 37, 64, 0.08);
+}
+
+/* Frosted overlay for modals/drawers */
+.frosted-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(10, 37, 64, 0.3);
+}
+
+/* Header glass (fixed header) */
+.header-glass {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(10, 37, 64, 0.06);
+}
+
+/* Scrolled state (more opaque) */
+.header-glass-scrolled {
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(10, 37, 64, 0.1);
+  box-shadow: 0 2px 8px rgba(10, 37, 64, 0.04);
+}
+
+/* Form card with glass effect */
+.form-glass {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(10, 37, 64, 0.08);
+  box-shadow: 0 20px 60px rgba(10, 37, 64, 0.1);
+}
+
+/* Mobile menu glass */
+.mobile-menu-glass {
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  background: linear-gradient(135deg, rgba(10, 37, 64, 0.95) 0%, rgba(26, 82, 118, 0.95) 100%);
+}
+
+/* Dropdown menu glass */
+.dropdown-glass {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(10, 37, 64, 0.08);
+  box-shadow: 0 8px 30px rgba(10, 37, 64, 0.12);
+}
+
+/* Stats card glass */
+.stats-glass {
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Badge glass */
+.badge-glass {
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  background: rgba(255, 255, 255, 0.9);
+}

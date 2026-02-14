@@ -1,0 +1,175 @@
+{
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "backToHome": "Back to Home",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "success": "Success!",
+    "submit": "Submit",
+    "close": "Close",
+    "menu": "Menu"
+  },
+  "header": {
+    "brand": "AQUAIONIC",
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "areas": "Service Areas",
+      "shop": "Shop",
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "cta": "Free Water Test",
+    "whatsapp": "WhatsApp",
+    "languageSwitcher": "Language"
+  },
+  "hero": {
+    "badge": "NSF & FDA Certified Systems",
+    "title": "Pure Water for",
+    "titleHighlight": "Every Florida Home",
+    "description": "Advanced water purification systems designed for Florida's unique water challenges. From well water treatment to whole-house filtration — we make your water safe, clean, and delicious.",
+    "ctaPrimary": "Get Free Water Test",
+    "ctaSecondary": "Explore Systems",
+    "nsfCertified": "NSF Certified",
+    "fdaApproved": "FDA Approved",
+    "stats": {
+      "removal": "Contaminant Removal",
+      "experience": "Years in Florida"
+    }
+  },
+  "trustBar": {
+    "waterAnalysis": "Free Water Analysis",
+    "certified": "NSF & FDA Certified",
+    "americanMade": "American-Made Valves",
+    "support": "Dedicated Support"
+  },
+  "services": {
+    "label": "Our Solutions",
+    "title": "Water Problems?",
+    "titleLine2": "We Have the Fix.",
+    "description": "Florida's water is unique — and so are our solutions. From rotten egg smells to hard water stains, we diagnose and solve every water issue.",
+    "items": {
+      "wellWater": {
+        "title": "Well Water Treatment",
+        "description": "Complete purification systems designed specifically for Florida well water — removing iron, sulfur, bacteria, and more."
+      },
+      "ironSulfur": {
+        "title": "Iron & Sulfur Removal",
+        "description": "Eliminate that rotten egg smell and orange stains with our advanced iron and sulfur filtration technology."
+      },
+      "hardWater": {
+        "title": "Hard Water Solutions",
+        "description": "Say goodbye to scale buildup, dry skin, and spotted dishes with our high-efficiency water softening systems."
+      },
+      "reverseOsmosis": {
+        "title": "Reverse Osmosis",
+        "description": "Crystal-clear drinking water at your fingertips. Our under-sink RO systems remove 99% of contaminants."
+      },
+      "wholeHouse": {
+        "title": "Whole House Filtration",
+        "description": "Clean water from every faucet. Protect your family, appliances, and plumbing with whole-house treatment."
+      },
+      "cityWater": {
+        "title": "City Water Purification",
+        "description": "Municipal water isn't always clean. Remove chlorine, chemicals, and contaminants from your city water supply."
+      }
+    }
+  },
+  "waterTest": {
+    "label": "Get Started",
+    "title": "Your Water, Analyzed.",
+    "titleLine2": "For Free.",
+    "description": "We'll test your water, identify issues, and recommend the perfect solution — all at no cost.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "address": "Property Address",
+      "waterType": "Water Source",
+      "waterTypes": {
+        "well": "Well Water",
+        "city": "City/Municipal",
+        "other": "Not Sure"
+      },
+      "submit": "Request Free Test",
+      "submitting": "Submitting...",
+      "successMessage": "Thank you! We'll contact you within 24 hours.",
+      "errorMessage": "Failed to submit. Please try again or call us."
+    }
+  },
+  "areas": {
+    "label": "Service Areas",
+    "title": "Serving South Florida",
+    "description": "Professional water treatment installation and service throughout Miami-Dade, Broward, and Palm Beach counties.",
+    "locations": {
+      "miami": {
+        "city": "Miami",
+        "county": "Miami-Dade County"
+      },
+      "bocaRaton": {
+        "city": "Boca Raton",
+        "county": "Palm Beach County"
+      },
+      "fortLauderdale": {
+        "city": "Fort Lauderdale",
+        "county": "Broward County"
+      },
+      "palmBeach": {
+        "city": "Palm Beach",
+        "county": "Palm Beach County"
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "tagline": "Clean water for every Florida home.",
+      "description": "NSF & FDA certified water treatment systems. American-made quality you can trust."
+    },
+    "services": {
+      "title": "Services",
+      "wellWater": "Well Water Treatment",
+      "ironSulfur": "Iron & Sulfur Removal",
+      "waterSoftener": "Water Softener Installation",
+      "reverseOsmosis": "Reverse Osmosis Systems",
+      "wholeHouse": "Whole House Filtration"
+    },
+    "areas": {
+      "title": "Service Areas",
+      "miami": "Miami",
+      "bocaRaton": "Boca Raton",
+      "fortLauderdale": "Fort Lauderdale",
+      "palmBeach": "Palm Beach"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "blog": "Blog",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "refund": "Refund Policy"
+    },
+    "certifications": {
+      "title": "Certifications",
+      "nsf": "NSF Certified",
+      "fda": "FDA Approved",
+      "epa": "EPA Compliant"
+    },
+    "copyright": "© {year} Aquaionic. All rights reserved.",
+    "builtWith": "Built with"
+  },
+  "contact": {
+    "phone": "+1 (305) 467-1525",
+    "email": "info@aquaionic.us",
+    "address": "South Florida"
+  },
+  "forms": {
+    "required": "Required field",
+    "invalidEmail": "Invalid email address",
+    "invalidPhone": "Invalid phone number"
+  }
+}

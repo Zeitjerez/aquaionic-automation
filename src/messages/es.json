@@ -1,0 +1,175 @@
+{
+  "common": {
+    "learnMore": "Saber Más",
+    "getStarted": "Comenzar",
+    "contactUs": "Contáctenos",
+    "readMore": "Leer Más",
+    "viewAll": "Ver Todo",
+    "backToHome": "Volver al Inicio",
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "success": "¡Éxito!",
+    "submit": "Enviar",
+    "close": "Cerrar",
+    "menu": "Menú"
+  },
+  "header": {
+    "brand": "AQUAIONIC",
+    "nav": {
+      "home": "Inicio",
+      "services": "Servicios",
+      "areas": "Áreas de Servicio",
+      "shop": "Tienda",
+      "about": "Nosotros",
+      "blog": "Blog",
+      "contact": "Contacto"
+    },
+    "cta": "Prueba de Agua Gratis",
+    "whatsapp": "WhatsApp",
+    "languageSwitcher": "Idioma"
+  },
+  "hero": {
+    "badge": "Sistemas Certificados NSF & FDA",
+    "title": "Agua Pura para",
+    "titleHighlight": "Cada Hogar en Florida",
+    "description": "Sistemas avanzados de purificación de agua diseñados para los desafíos únicos del agua de Florida. Desde tratamiento de agua de pozo hasta filtración de toda la casa — hacemos que su agua sea segura, limpia y deliciosa.",
+    "ctaPrimary": "Prueba de Agua Gratis",
+    "ctaSecondary": "Ver Sistemas",
+    "nsfCertified": "Certificado NSF",
+    "fdaApproved": "Aprobado FDA",
+    "stats": {
+      "removal": "Eliminación de Contaminantes",
+      "experience": "Años en Florida"
+    }
+  },
+  "trustBar": {
+    "waterAnalysis": "Análisis de Agua Gratis",
+    "certified": "Certificado NSF & FDA",
+    "americanMade": "Válvulas Americanas",
+    "support": "Soporte Dedicado"
+  },
+  "services": {
+    "label": "Nuestras Soluciones",
+    "title": "¿Problemas de Agua?",
+    "titleLine2": "Tenemos la Solución.",
+    "description": "El agua de Florida es única, y nuestras soluciones también. Desde olores a huevo podrido hasta manchas de agua dura, diagnosticamos y resolvemos cada problema de agua.",
+    "items": {
+      "wellWater": {
+        "title": "Tratamiento de Agua de Pozo",
+        "description": "Sistemas de purificación completos diseñados específicamente para el agua de pozo de Florida — eliminando hierro, azufre, bacterias y más."
+      },
+      "ironSulfur": {
+        "title": "Eliminación de Hierro y Azufre",
+        "description": "Elimine ese olor a huevo podrido y manchas anaranjadas con nuestra tecnología avanzada de filtración de hierro y azufre."
+      },
+      "hardWater": {
+        "title": "Soluciones de Agua Dura",
+        "description": "Diga adiós a la acumulación de cal, piel seca y platos manchados con nuestros sistemas de ablandamiento de agua de alta eficiencia."
+      },
+      "reverseOsmosis": {
+        "title": "Ósmosis Inversa",
+        "description": "Agua potable cristalina al alcance de su mano. Nuestros sistemas RO bajo fregadero eliminan el 99% de los contaminantes."
+      },
+      "wholeHouse": {
+        "title": "Filtración de Toda la Casa",
+        "description": "Agua limpia de cada grifo. Proteja a su familia, electrodomésticos y tuberías con tratamiento de toda la casa."
+      },
+      "cityWater": {
+        "title": "Purificación de Agua Municipal",
+        "description": "El agua municipal no siempre es limpia. Elimine cloro, químicos y contaminantes de su suministro de agua de la ciudad."
+      }
+    }
+  },
+  "waterTest": {
+    "label": "Comenzar",
+    "title": "Su Agua, Analizada.",
+    "titleLine2": "Gratis.",
+    "description": "Analizaremos su agua, identificaremos problemas y recomendaremos la solución perfecta — todo sin costo.",
+    "form": {
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "phone": "Número de Teléfono",
+      "address": "Dirección de Propiedad",
+      "waterType": "Fuente de Agua",
+      "waterTypes": {
+        "well": "Agua de Pozo",
+        "city": "Agua Municipal",
+        "other": "No Estoy Seguro"
+      },
+      "submit": "Solicitar Prueba Gratis",
+      "submitting": "Enviando...",
+      "successMessage": "¡Gracias! Nos pondremos en contacto en 24 horas.",
+      "errorMessage": "Error al enviar. Por favor intente de nuevo o llámenos."
+    }
+  },
+  "areas": {
+    "label": "Áreas de Servicio",
+    "title": "Sirviendo al Sur de Florida",
+    "description": "Instalación profesional de tratamiento de agua y servicio en los condados de Miami-Dade, Broward y Palm Beach.",
+    "locations": {
+      "miami": {
+        "city": "Miami",
+        "county": "Condado de Miami-Dade"
+      },
+      "bocaRaton": {
+        "city": "Boca Raton",
+        "county": "Condado de Palm Beach"
+      },
+      "fortLauderdale": {
+        "city": "Fort Lauderdale",
+        "county": "Condado de Broward"
+      },
+      "palmBeach": {
+        "city": "Palm Beach",
+        "county": "Condado de Palm Beach"
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "tagline": "Agua limpia para cada hogar en Florida.",
+      "description": "Sistemas de tratamiento de agua certificados NSF & FDA. Calidad americana en la que puede confiar."
+    },
+    "services": {
+      "title": "Servicios",
+      "wellWater": "Tratamiento de Agua de Pozo",
+      "ironSulfur": "Eliminación de Hierro y Azufre",
+      "waterSoftener": "Instalación de Ablandadores",
+      "reverseOsmosis": "Sistemas de Ósmosis Inversa",
+      "wholeHouse": "Filtración de Toda la Casa"
+    },
+    "areas": {
+      "title": "Áreas de Servicio",
+      "miami": "Miami",
+      "bocaRaton": "Boca Raton",
+      "fortLauderdale": "Fort Lauderdale",
+      "palmBeach": "Palm Beach"
+    },
+    "company": {
+      "title": "Compañía",
+      "about": "Nosotros",
+      "blog": "Blog",
+      "contact": "Contacto",
+      "privacy": "Política de Privacidad",
+      "refund": "Política de Reembolso"
+    },
+    "certifications": {
+      "title": "Certificaciones",
+      "nsf": "Certificado NSF",
+      "fda": "Aprobado FDA",
+      "epa": "Conforme EPA"
+    },
+    "copyright": "© {year} Aquaionic. Todos los derechos reservados.",
+    "builtWith": "Construido con"
+  },
+  "contact": {
+    "phone": "+1 (305) 467-1525",
+    "email": "info@aquaionic.us",
+    "address": "Sur de Florida"
+  },
+  "forms": {
+    "required": "Campo requerido",
+    "invalidEmail": "Correo electrónico inválido",
+    "invalidPhone": "Número de teléfono inválido"
+  }
+}

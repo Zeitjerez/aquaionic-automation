@@ -1,0 +1,159 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Import custom styles */
+@import '../styles/animations.css';
+@import '../styles/glassmorphism.css';
+@import '../styles/utilities.css';
+
+/* Base styles */
+@layer base {
+  :root {
+    /* CSS Variables for dynamic values */
+    --deep-blue: #0a2540;
+    --ocean: #1a5276;
+    --ocean-mid: #1565a0;
+    --cyan: #00bcd4;
+    --cyan-soft: #26c6da;
+    --cyan-light: #e0f7fa;
+    --cyan-glow: rgba(0,188,212,0.15);
+    --pure-white: #ffffff;
+    --ghost: #f7f9fc;
+    --ghost-warm: #fafbfe;
+    --text: #1e2a3a;
+    --text-mid: #4a5568;
+    --text-light: #8494a7;
+    --accent-green: #00c9a7;
+    --accent-green-light: rgba(0,201,167,0.08);
+    --border: rgba(10,37,64,0.06);
+    --transition: 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white text-text font-dm antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-jakarta font-bold text-deep-blue;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl;
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    line-height: 1.15;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+    line-height: 1.2;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+    line-height: 1.3;
+  }
+
+  p {
+    @apply text-base md:text-lg text-text-mid;
+    line-height: 1.7;
+  }
+
+  a {
+    @apply transition-colors duration-smooth;
+  }
+
+  button {
+    @apply transition-all duration-smooth;
+  }
+}
+
+/* Component layer for reusable patterns */
+@layer components {
+  /* Container */
+  .container-custom {
+    @apply w-full max-w-[1320px] mx-auto px-6 md:px-12 lg:px-16;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-br from-cyan via-ocean to-deep-blue bg-clip-text text-transparent;
+  }
+
+  .text-gradient-green {
+    @apply bg-gradient-to-br from-accent-green to-cyan bg-clip-text text-transparent;
+  }
+
+  /* Button primary */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold text-white bg-gradient-to-r from-cyan to-ocean shadow-cyan hover:shadow-xl hover:-translate-y-0.5 transition-all duration-smooth;
+  }
+
+  /* Button secondary */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-semibold text-ocean bg-white border-2 border-ocean hover:bg-ocean hover:text-white transition-all duration-smooth;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-all duration-smooth;
+  }
+
+  /* Input field */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border-2 border-border bg-white/80 backdrop-blur-sm text-text placeholder:text-text-light focus:border-cyan focus:ring-2 focus:ring-cyan/20 focus:outline-none transition-all duration-smooth;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-cyan-light text-ocean border border-cyan/20;
+  }
+
+  /* Section label */
+  .section-label {
+    @apply inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-cyan-light text-ocean border border-cyan/20 mb-4;
+  }
+}
+
+/* Utility layer for one-off styles */
+@layer utilities {
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Smooth scrolling */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+}
