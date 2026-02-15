@@ -1,139 +1,150 @@
+'use client';
+
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import Button from '../ui/Button';
-import FloatingBadge from '../ui/FloatingBadge';
+import { motion } from 'framer-motion';
 import Icon from '../ui/Icon';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as any },
+  },
+};
 
 export default function Hero() {
   const t = useTranslations('hero');
   const locale = useLocale();
 
   return (
-    <section className="relative min-h-screen flex items-center section-padding overflow-hidden">
-      {/* Hero glows (background effects) */}
-      <div
-        className="absolute -top-[15%] -right-[8%] w-[750px] h-[750px] rounded-full pointer-events-none z-0"
-        style={{
-          background: 'radial-gradient(circle, rgba(0,188,212,0.15) 0%, transparent 70%)',
-          animation: 'ambientDrift 18s ease-in-out infinite alternate',
-        }}
+    <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero/water-bg.jpg"
+          alt="Pure water"
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep-blue/90 via-deep-blue/70 to-deep-blue/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-deep-blue/60 via-transparent to-transparent" />
+      </div>
+
+      {/* Animated Orbs */}
+      <motion.div
+        className="absolute top-20 right-[15%] w-[400px] h-[400px] rounded-full pointer-events-none z-[1]"
+        style={{ background: 'radial-gradient(circle, rgba(0,188,212,0.2) 0%, transparent 70%)' }}
+        animate={{ y: [0, -30, 0], x: [0, 15, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
       />
-      <div
-        className="absolute -bottom-[12%] -left-[6%] w-[500px] h-[500px] rounded-full pointer-events-none z-0"
-        style={{
-          background: 'radial-gradient(circle, rgba(0,201,167,0.08) 0%, transparent 70%)',
-          animation: 'ambientDrift 14s ease-in-out infinite alternate-reverse',
-        }}
+      <motion.div
+        className="absolute bottom-10 left-[10%] w-[300px] h-[300px] rounded-full pointer-events-none z-[1]"
+        style={{ background: 'radial-gradient(circle, rgba(0,201,167,0.12) 0%, transparent 70%)' }}
+        animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
-          <div className="space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-light text-ocean border border-cyan/20 text-sm font-bold animate-fade-in">
-              <Icon name="shield" size={16} />
-              {t('badge')}
-            </div>
+      <div className="container-custom relative z-10 py-20">
+        <div className="max-w-3xl">
+          {/* Badge */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ delay: 0 }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-sm font-semibold mb-8"
+          >
+            <Icon name="shield" size={16} className="text-cyan" />
+            {t('badge')}
+          </motion.div>
 
-            {/* Title */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-jakarta font-extrabold text-deep-blue leading-[1.1] animate-fade-up">
-              {t('title')}
-              <br />
-              <span className="text-gradient-primary">{t('titleHighlight')}</span>
-            </h1>
+          {/* Title */}
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ delay: 0.15 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-jakarta font-extrabold text-white leading-[1.05] mb-6"
+          >
+            {t('title')}
+            <br />
+            <span className="bg-gradient-to-r from-cyan via-cyan-soft to-accent-green bg-clip-text text-transparent">
+              {t('titleHighlight')}
+            </span>
+          </motion.h1>
 
-            {/* Description */}
-            <p className="text-lg md:text-xl text-text-mid leading-relaxed max-w-xl animate-fade-up" style={{ animationDelay: '0.1s' }}>
-              {t('description')}
-            </p>
+          {/* Description */}
+          <motion.p
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ delay: 0.3 }}
+            className="text-lg md:text-xl text-white/75 leading-relaxed max-w-xl mb-10"
+          >
+            {t('description')}
+          </motion.p>
 
-            {/* Buttons */}
-            <div className="flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-              <Link href={locale === 'en' ? '/water-test' : '/es/prueba-agua'}>
-                <Button variant="primary" size="lg">
-                  {t('ctaPrimary')}
-                  <Icon name="arrow-right" size={20} />
-                </Button>
-              </Link>
-              <Link href="#services">
-                <Button variant="secondary" size="lg">
-                  {t('ctaSecondary')}
-                </Button>
-              </Link>
-            </div>
-          </div>
+          {/* CTAs */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ delay: 0.45 }}
+            className="flex flex-wrap gap-4 mb-16"
+          >
+            <Link
+              href={locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo'}
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-cyan hover:bg-cyan-soft text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-cyan/25 hover:shadow-cyan/40 hover:-translate-y-0.5"
+            >
+              {t('ctaPrimary')}
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <Link
+              href={locale === 'en' ? '/about' : '/es/nosotros'}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white font-bold rounded-xl border border-white/20 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              {t('ctaSecondary')}
+            </Link>
+          </motion.div>
 
-          {/* Visual */}
-          <div className="relative animate-scale-in" style={{ animationDelay: '0.3s' }}>
-            {/* Floating badges */}
-            <FloatingBadge variant="nsf" delay={0}>
-              {t('nsfCertified')}
-            </FloatingBadge>
-            <FloatingBadge variant="fda" delay={2.5}>
-              {t('fdaApproved')}
-            </FloatingBadge>
-
-            {/* Hero card */}
-            <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-border">
-              {/* Water drop icon */}
-              <div className="flex justify-center mb-8">
-                <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#00bcd4" stopOpacity="0.85"/>
-                      <stop offset="50%" stopColor="#1a5276" stopOpacity="0.9"/>
-                      <stop offset="100%" stopColor="#0a2540" stopOpacity="0.95"/>
-                    </linearGradient>
-                    <linearGradient id="innerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#fff" stopOpacity="0.35"/>
-                      <stop offset="100%" stopColor="#00bcd4" stopOpacity="0.05"/>
-                    </linearGradient>
-                    <filter id="dropShadow">
-                      <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#00bcd4" floodOpacity="0.2"/>
-                    </filter>
-                  </defs>
-                  <path
-                    d="M100 15 C100 15,28 118,28 172 C28 215,60 252,100 252 C140 252,172 215,172 172 C172 118,100 15,100 15Z"
-                    fill="url(#dropGrad)"
-                    filter="url(#dropShadow)"
-                  />
-                  <path
-                    d="M82 70 C82 70,45 138,45 172 C45 204,68 235,100 235"
-                    fill="none"
-                    stroke="url(#innerGrad)"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                  />
-                  <circle cx="72" cy="152" r="10" fill="rgba(255,255,255,0.15)"/>
-                  <circle cx="62" cy="136" r="4.5" fill="rgba(255,255,255,0.25)"/>
-                  <circle cx="80" cy="170" r="3" fill="rgba(255,255,255,0.12)"/>
-                </svg>
-              </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="backdrop-glass-light rounded-xl p-4 text-center">
-                  <div className="text-4xl font-jakarta font-extrabold text-ocean mb-1">
-                    99<span className="text-cyan">%</span>
+          {/* Stats Row */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            transition={{ delay: 0.6 }}
+            className="flex flex-wrap gap-8 md:gap-12"
+          >
+            {[
+              { value: '99%', label: t('stats.removal') },
+              { value: '10+', label: t('stats.experience') },
+              { value: '500+', label: locale === 'en' ? 'Homes Protected' : 'Hogares Protegidos' },
+            ].map((stat, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="w-px h-10 bg-gradient-to-b from-cyan to-transparent" />
+                <div>
+                  <div className="text-2xl md:text-3xl font-jakarta font-extrabold text-white">
+                    {stat.value}
                   </div>
-                  <div className="text-xs font-semibold text-text-mid">
-                    {t('stats.removal')}
-                  </div>
-                </div>
-                <div className="backdrop-glass-light rounded-xl p-4 text-center">
-                  <div className="text-4xl font-jakarta font-extrabold text-ocean mb-1">
-                    10<span className="text-cyan">+</span>
-                  </div>
-                  <div className="text-xs font-semibold text-text-mid">
-                    {t('stats.experience')}
+                  <div className="text-xs text-white/60 font-medium uppercase tracking-wider">
+                    {stat.label}
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            ))}
+          </motion.div>
         </div>
       </div>
+
+      {/* Bottom Gradient Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />
     </section>
   );
 }

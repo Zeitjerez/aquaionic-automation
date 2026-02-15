@@ -11,36 +11,42 @@ export default function ServicesGrid() {
       title: t('items.wellWater.title'),
       description: t('items.wellWater.description'),
       href: locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo',
+      image: '/images/services/well-water.jpg',
     },
     {
       icon: 'lightning',
       title: t('items.ironSulfur.title'),
       description: t('items.ironSulfur.description'),
       href: locale === 'en' ? '/iron-sulfur-removal' : '/es/eliminacion-hierro-azufre',
+      image: '/images/services/water-filtration.jpg',
     },
     {
       icon: 'shield',
       title: t('items.hardWater.title'),
       description: t('items.hardWater.description'),
       href: locale === 'en' ? '/water-softener-installation' : '/es/instalacion-ablandadores',
+      image: '/images/services/water-softener.jpg',
     },
     {
       icon: 'check',
       title: t('items.reverseOsmosis.title'),
       description: t('items.reverseOsmosis.description'),
       href: locale === 'en' ? '/reverse-osmosis-system' : '/es/sistema-osmosis-inversa',
+      image: '/images/services/reverse-osmosis.jpg',
     },
     {
       icon: 'home',
       title: t('items.wholeHouse.title'),
       description: t('items.wholeHouse.description'),
       href: locale === 'en' ? '/whole-house-water-filtration' : '/es/filtracion-agua-toda-casa',
+      image: '/images/products/water-filter.jpg',
     },
     {
       icon: 'water-drop',
       title: t('items.cityWater.title'),
       description: t('items.cityWater.description'),
       href: locale === 'en' ? '/city-water-purification' : '/es/purificacion-agua-municipal',
+      image: '/images/services/water-filtration.jpg',
     },
   ];
 
@@ -66,8 +72,7 @@ export default function ServicesGrid() {
             <ServiceCard
               key={index}
               {...service}
-              className="animate-fade-up"
-              style={{ animationDelay: `${index * 0.1}s` } as React.CSSProperties}
+              index={index}
             />
           ))}
         </div>

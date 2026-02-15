@@ -1,0 +1,32 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Standalone icon version -->
+  <g id="icon">
+    <!-- Background circle -->
+    <circle cx="30" cy="30" r="28" fill="#E0F7FA" opacity="0.3"/>
+
+    <!-- Main water drop shape -->
+    <path d="M30 12C30 12 18 26 18 38C18 44.6274 23.3726 50 30 50C36.6274 50 42 44.6274 42 38C42 26 30 12 30 12Z" fill="#00BCD4"/>
+
+    <!-- Gradient overlay -->
+    <defs>
+      <linearGradient id="dropGradient" x1="30" y1="12" x2="30" y2="50" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#26C6DA"/>
+        <stop offset="100%" stop-color="#00BCD4"/>
+      </linearGradient>
+    </defs>
+    <path d="M30 12C30 12 18 26 18 38C18 44.6274 23.3726 50 30 50C36.6274 50 42 44.6274 42 38C42 26 30 12 30 12Z" fill="url(#dropGradient)"/>
+
+    <!-- Ionic waves -->
+    <path d="M23 34C23 34 26.5 31 30 31C33.5 31 37 34 37 34" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    <path d="M24 39C24 39 27 36.5 30 36.5C33 36.5 36 39 36 39" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Ions -->
+    <circle cx="30" cy="24" r="2.5" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="26" cy="42" r="2" fill="#FFFFFF" opacity="0.7"/>
+    <circle cx="34" cy="42" r="2" fill="#FFFFFF" opacity="0.7"/>
+
+    <!-- Plus symbol on top ion -->
+    <line x1="30" y1="22.5" x2="30" y2="25.5" stroke="#00BCD4" stroke-width="0.8"/>
+    <line x1="28.5" y1="24" x2="31.5" y2="24" stroke="#00BCD4" stroke-width="0.8"/>
+  </g>
+</svg>

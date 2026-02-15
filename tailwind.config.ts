@@ -44,8 +44,8 @@ const config: Config = {
         'lg': '24px',
       },
       fontFamily: {
-        'jakarta': ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        'dm': ['"DM Sans"', 'system-ui', 'sans-serif'],
+        'jakarta': ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
+        'dm': ['var(--font-dm)', 'system-ui', 'sans-serif'],
       },
       animation: {
         'float': 'float 5s ease-in-out infinite',
