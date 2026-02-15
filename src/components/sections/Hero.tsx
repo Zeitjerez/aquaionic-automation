@@ -12,8 +12,8 @@ export default function Hero() {
   const locale = useLocale();
 
   return (
-    <section className="relative min-h-screen flex items-center bg-white pt-[72px]">
-      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+    <section className="relative min-h-[85vh] flex items-center bg-white pt-[72px]">
+      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-16 md:py-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column */}
           <div>

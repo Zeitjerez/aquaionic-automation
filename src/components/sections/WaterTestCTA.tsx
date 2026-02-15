@@ -16,7 +16,7 @@ export default function WaterTestCTA() {
   ];
 
   return (
-    <section id="water-test" className="py-24 md:py-32 bg-white">
+    <section id="water-test" className="py-16 md:py-20 bg-white">
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Content */}

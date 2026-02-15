@@ -34,9 +34,9 @@ export default function AreasGrid() {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section className="py-16 md:py-20 bg-white">
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-14">
           <ScrollReveal>
             <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-deep-blue mb-4 tracking-tight">
               {t('title')}
