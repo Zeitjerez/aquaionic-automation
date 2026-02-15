@@ -40,16 +40,16 @@ export default function Hero() {
             <ScrollReveal delay={0.2}>
               <div className="flex flex-wrap gap-4 mb-16">
                 <Link
-                  href={locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo'}
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-cyan text-white font-semibold text-[15px] rounded-xl hover:bg-cyan-soft transition-colors duration-200"
+                  href="#water-test"
+                  className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-cyan text-white font-semibold text-[15px] rounded-xl hover:bg-cyan-soft transition-colors duration-200 animate-breathe"
                 >
                   {t('ctaPrimary')}
                   <ArrowRight size={18} strokeWidth={2.5} />
                 </Link>
 
                 <Link
-                  href={locale === 'en' ? '/about' : '/es/nosotros'}
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-transparent border border-gray-200 text-deep-blue font-semibold text-[15px] rounded-xl hover:border-cyan hover:text-cyan transition-colors duration-200"
+                  href={locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo'}
+                  className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-transparent border-2 border-gray-200 text-deep-blue font-semibold text-[15px] rounded-xl hover:border-cyan hover:text-cyan transition-colors duration-200"
                 >
                   {t('ctaSecondary')}
                 </Link>

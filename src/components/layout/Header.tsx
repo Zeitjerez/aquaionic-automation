@@ -20,10 +20,38 @@ export default function Header() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
+  const [servicesOpen, setServicesOpen] = useState(false);
+
+  const services = [
+    {
+      label: 'Well Water Treatment',
+      href: locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo'
+    },
+    {
+      label: 'Iron & Sulfur Removal',
+      href: locale === 'en' ? '/iron-sulfur-removal' : '/es/eliminacion-hierro-azufre'
+    },
+    {
+      label: 'Hard Water Solutions',
+      href: locale === 'en' ? '/hard-water-solutions' : '/es/soluciones-agua-dura'
+    },
+    {
+      label: 'Reverse Osmosis',
+      href: locale === 'en' ? '/reverse-osmosis-systems' : '/es/sistemas-osmosis-inversa'
+    },
+    {
+      label: 'Whole House Filtration',
+      href: locale === 'en' ? '/whole-house-filtration' : '/es/filtracion-casa-completa'
+    },
+    {
+      label: 'City Water Purification',
+      href: locale === 'en' ? '/city-water-purification' : '/es/purificacion-agua-ciudad'
+    },
+  ];
+
   const navItems = [
-    { label: t('nav.services'), href: `/${locale === 'en' ? 'well-water-treatment' : 'es/tratamiento-agua-de-pozo'}` },
-    { label: t('nav.areas'), href: `/${locale === 'en' ? 'miami' : 'es/miami-es'}` },
     { label: t('nav.about'), href: `/${locale === 'en' ? 'about' : 'es/nosotros'}` },
+    { label: t('nav.areas'), href: `/${locale === 'en' ? 'miami' : 'es/miami-es'}` },
     { label: t('nav.shop'), href: `/${locale === 'en' ? 'shop' : 'es/tienda'}` },
   ];
 
@@ -42,6 +70,43 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8">
+              {/* Services Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <button className="flex items-center gap-1 text-[14.5px] font-medium text-text-mid hover:text-cyan transition-colors duration-200">
+                  {t('nav.services')}
+                  <ChevronDown size={14} className={cn(
+                    "transition-transform duration-200",
+                    servicesOpen && "rotate-180"
+                  )} />
+                </button>
+
+                <AnimatePresence>
+                  {servicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 z-50"
+                    >
+                      {services.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="block px-4 py-2.5 text-[13.5px] font-medium text-text-mid hover:text-cyan hover:bg-ghost transition-colors"
+                        >
+                          {service.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -60,8 +125,8 @@ export default function Header() {
               </a>
 
               <Link
-                href={locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo'}
-                className="px-6 py-2.5 bg-deep-blue hover:bg-cyan text-white text-[13.5px] font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-cyan"
+                href="#water-test"
+                className="px-6 py-2.5 bg-cyan hover:bg-cyan-soft text-white text-[13.5px] font-semibold rounded-full transition-all duration-200 animate-breathe"
               >
                 {t('cta')}
               </Link>

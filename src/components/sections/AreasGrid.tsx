@@ -60,13 +60,31 @@ export default function AreasGrid() {
               }}
             >
               <Link href={area.href} className="group block">
-                <div className="text-center p-8 rounded-2xl border border-gray-100 bg-white hover:border-cyan/20 hover:shadow-md transition-all duration-200">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan/20 to-ocean/10 mx-auto mb-4 flex items-center justify-center group-hover:from-cyan/30 group-hover:to-ocean/20 transition-all duration-200">
-                    <MapPin size={20} className="text-cyan" strokeWidth={2.5} />
+                <motion.div
+                  className="relative text-center p-8 rounded-2xl border border-gray-100 bg-white hover:border-cyan/20 transition-all duration-200 overflow-hidden"
+                  whileHover={{ y: -4, boxShadow: '0 10px 30px rgba(0,188,212,0.1)' }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan/0 to-ocean/0 group-hover:from-cyan/5 group-hover:to-ocean/5 transition-all duration-300" />
+
+                  <div className="relative z-10">
+                    <motion.div
+                      className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan/20 to-ocean/10 mx-auto mb-4 flex items-center justify-center group-hover:from-cyan/30 group-hover:to-ocean/20 transition-all duration-200"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <MapPin size={22} className="text-cyan group-hover:animate-icon-float" strokeWidth={2.5} />
+                    </motion.div>
+                    <h3 className="text-lg font-jakarta font-bold text-deep-blue mb-1 group-hover:text-cyan transition-colors duration-200">{area.city}</h3>
+                    <span className="text-[13px] text-gray-500 font-medium">{area.county}</span>
                   </div>
-                  <h3 className="text-lg font-jakarta font-bold text-deep-blue mb-1 group-hover:text-cyan transition-colors duration-200">{area.city}</h3>
-                  <span className="text-[13px] text-gray-500 font-medium">{area.county}</span>
-                </div>
+
+                  {/* Shine effect on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  </div>
+                </motion.div>
               </Link>
             </motion.div>
           ))}
