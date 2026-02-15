@@ -37,14 +37,10 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href={locale === 'en' ? '/' : '/es/inicio'} className="inline-block mb-4">
-              <div className="flex items-center">
-                <span className="text-2xl font-jakarta font-extrabold text-white tracking-tight">
-                  AQUA
-                </span>
-                <span className="text-2xl font-jakarta font-extrabold text-cyan tracking-tight">
-                  IONIC
-                </span>
-              </div>
+              <span className="font-jakarta font-extrabold text-[24px] tracking-[-0.04em]">
+                <span className="text-white">aqua</span>
+                <span className="text-cyan">ionic</span>
+              </span>
             </Link>
             <p className="text-sm text-white/70 mb-6 leading-relaxed">
               {t('brand.tagline')}
@@ -140,31 +136,22 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="container-custom py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-white/60">
-              {t('copyright', { year: currentYear })}
-            </p>
-            <p className="text-sm text-white/60">
-              {t('builtWith')}{' '}
+        <div className="container-custom py-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <span className="text-[13px] text-white/35">
+              © 2026 Aquaionic. All rights reserved.
+            </span>
+            <span className="text-[13px] text-white/35">
+              Design by{' '}
               <a
-                href="https://nextjs.org"
+                href="https://flowtool.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cyan hover:text-cyan-soft transition-colors"
+                className="text-cyan hover:text-white transition-colors"
               >
-                Next.js
+                Flow Tool
               </a>
-              {' '}&amp;{' '}
-              <a
-                href="https://claude.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-cyan hover:text-cyan-soft transition-colors"
-              >
-                Claude
-              </a>
-            </p>
+            </span>
           </div>
         </div>
       </div>

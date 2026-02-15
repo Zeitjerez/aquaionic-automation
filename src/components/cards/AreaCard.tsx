@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Icon from '../ui/Icon';
+import { MapPin } from 'lucide-react';
 
 interface AreaCardProps {
   city: string;
@@ -19,19 +19,17 @@ export default function AreaCard({
   return (
     <Link
       href={href}
-      className={`group block bg-white rounded-lg border border-border p-6 hover:border-cyan hover:shadow-md transition-all duration-smooth ${className}`}
+      className={`group block bg-white rounded-2xl border border-gray-100 p-8 hover:border-gray-200 transition-colors duration-200 ${className}`}
       style={style}
     >
-      {/* Icon */}
-      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-light to-blue-50 text-ocean flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-smooth">
-        <Icon name="map-pin" size={24} />
+      <div className="w-12 h-12 rounded-xl bg-cyan/10 flex items-center justify-center mb-4 group-hover:bg-cyan/15 transition-colors duration-200">
+        <MapPin size={20} className="text-cyan" strokeWidth={2.5} />
       </div>
 
-      {/* Content */}
       <h3 className="text-lg font-jakarta font-bold text-deep-blue mb-1">
         {city}
       </h3>
-      <p className="text-sm text-text-mid">
+      <p className="text-[13px] text-gray-500 font-medium">
         {county}
       </p>
     </Link>

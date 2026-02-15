@@ -24,7 +24,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <div
-      className={`group bg-white rounded-lg border border-border overflow-hidden hover:shadow-lg transition-all duration-smooth ${className}`}
+      className={`group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-gray-200 hover:shadow-md transition-all duration-200 ${className}`}
     >
       {/* Image */}
       <div className="relative aspect-square bg-ghost overflow-hidden">

@@ -33,14 +33,10 @@ export default function Header() {
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-[72px]">
             {/* Logo */}
-            <Link href={locale === 'en' ? '/' : '/es/inicio'} className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-cyan to-accent-green flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="white" strokeWidth="0">
-                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-                </svg>
-              </div>
-              <span className="font-jakarta font-extrabold text-[22px] tracking-tight text-deep-blue">
-                AQUA<span className="text-cyan">IONIC</span>
+            <Link href={locale === 'en' ? '/' : '/es/inicio'}>
+              <span className="font-jakarta font-extrabold text-[24px] tracking-[-0.04em]">
+                <span className="text-deep-blue">aqua</span>
+                <span className="text-cyan">ionic</span>
               </span>
             </Link>
 
