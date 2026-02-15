@@ -62,9 +62,8 @@ export default function Header() {
           <div className="flex items-center justify-between h-[72px]">
             {/* Logo */}
             <Link href={locale === 'en' ? '/' : '/es/inicio'}>
-              <span className="font-jakarta font-extrabold text-[24px] tracking-[-0.04em]">
-                <span className="text-deep-blue">aqua</span>
-                <span className="text-cyan">ionic</span>
+              <span className="font-jakarta font-extrabold text-[24px] tracking-[-0.04em] bg-gradient-to-r from-deep-blue via-ocean to-cyan bg-clip-text text-transparent">
+                AQUAIONIC
               </span>
             </Link>
 
@@ -164,8 +163,8 @@ export default function Header() {
             >
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between p-6 border-b border-border">
-                  <span className="font-jakarta font-extrabold text-xl text-deep-blue">
-                    AQUA<span className="text-cyan">IONIC</span>
+                  <span className="font-jakarta font-extrabold text-xl bg-gradient-to-r from-deep-blue via-ocean to-cyan bg-clip-text text-transparent">
+                    AQUAIONIC
                   </span>
                   <button onClick={() => setMobileOpen(false)} className="p-2 text-text-mid hover:text-deep-blue">
                     <X size={24} />

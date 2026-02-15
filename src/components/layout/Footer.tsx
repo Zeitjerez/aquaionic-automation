@@ -37,9 +37,8 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href={locale === 'en' ? '/' : '/es/inicio'} className="inline-block mb-4">
-              <span className="font-jakarta font-extrabold text-[24px] tracking-[-0.04em]">
-                <span className="text-white">aqua</span>
-                <span className="text-cyan">ionic</span>
+              <span className="font-jakarta font-extrabold text-[24px] tracking-[-0.04em] bg-gradient-to-r from-white via-cyan-soft to-cyan bg-clip-text text-transparent">
+                AQUAIONIC
               </span>
             </Link>
             <p className="text-sm text-white/70 mb-6 leading-relaxed">
