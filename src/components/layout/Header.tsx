@@ -4,13 +4,15 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function Header() {
   const t = useTranslations('header');
   const locale = useLocale();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -21,6 +23,12 @@ export default function Header() {
   }, []);
 
   const [servicesOpen, setServicesOpen] = useState(false);
+
+  // Get the path without locale prefix for language switching
+  const getLocalizedPath = (newLocale: string) => {
+    const pathWithoutLocale = pathname.replace(/^\/(en|es)/, '') || '/';
+    return `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
+  };
 
   const services = [
     {
@@ -123,6 +131,32 @@ export default function Header() {
                 <span>(305) 467-1525</span>
               </a>
 
+              {/* Language Switcher */}
+              <div className="flex items-center gap-1 p-1 bg-ghost rounded-full border border-gray-200">
+                <Link
+                  href={getLocalizedPath('en')}
+                  className={cn(
+                    "px-3 py-1.5 text-[13px] font-semibold rounded-full transition-all duration-200",
+                    locale === 'en'
+                      ? "bg-cyan text-white shadow-sm"
+                      : "text-text-mid hover:text-cyan"
+                  )}
+                >
+                  EN
+                </Link>
+                <Link
+                  href={getLocalizedPath('es')}
+                  className={cn(
+                    "px-3 py-1.5 text-[13px] font-semibold rounded-full transition-all duration-200",
+                    locale === 'es'
+                      ? "bg-cyan text-white shadow-sm"
+                      : "text-text-mid hover:text-cyan"
+                  )}
+                >
+                  ES
+                </Link>
+              </div>
+
               <Link
                 href="#water-test"
                 className="px-6 py-2.5 bg-cyan hover:bg-cyan-soft text-white text-[13.5px] font-semibold rounded-full transition-all duration-200 animate-breathe"
@@ -187,8 +221,35 @@ export default function Header() {
                     <Phone size={16} />
                     (305) 467-1525
                   </a>
+
+                  {/* Mobile Language Switcher */}
+                  <div className="flex items-center gap-2 p-1 bg-ghost rounded-xl border border-gray-200">
+                    <Link
+                      href={getLocalizedPath('en')}
+                      className={cn(
+                        "flex-1 text-center px-4 py-2.5 text-[14px] font-semibold rounded-lg transition-all duration-200",
+                        locale === 'en'
+                          ? "bg-cyan text-white shadow-sm"
+                          : "text-text-mid"
+                      )}
+                    >
+                      English
+                    </Link>
+                    <Link
+                      href={getLocalizedPath('es')}
+                      className={cn(
+                        "flex-1 text-center px-4 py-2.5 text-[14px] font-semibold rounded-lg transition-all duration-200",
+                        locale === 'es'
+                          ? "bg-cyan text-white shadow-sm"
+                          : "text-text-mid"
+                      )}
+                    >
+                      Español
+                    </Link>
+                  </div>
+
                   <Link
-                    href={locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo'}
+                    href="#water-test"
                     className="block text-center py-3.5 bg-cyan text-white font-semibold rounded-xl hover:bg-cyan-soft transition-colors"
                   >
                     {t('cta')}
