@@ -8,6 +8,36 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1200px',
+        '2xl': '1400px',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '30': '7.5rem',
+      },
+      fontSize: {
+        'display-xl': ['clamp(2.5rem, 5vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.035em', fontWeight: '800' }],
+        'display-lg': ['clamp(2rem, 4vw, 2.75rem)', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '800' }],
+        'display': ['clamp(1.5rem, 3vw, 2rem)', { lineHeight: '1.15', letterSpacing: '-0.025em', fontWeight: '700' }],
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '1.5rem',
+          lg: '2rem',
+          xl: '3rem',
+        },
+      },
+      maxWidth: {
+        'container': '1200px',
+      },
       colors: {
         'deep-blue': '#0a2540',
         'ocean': '#1a5276',
