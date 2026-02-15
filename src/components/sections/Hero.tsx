@@ -233,7 +233,7 @@ export default function Hero() {
 
               {/* Floating stat - improved design */}
               <motion.div
-                className="absolute bottom-12 -left-10 bg-white rounded-2xl p-5 shadow-xl shadow-ocean/10 flex items-center gap-4 border border-border/50"
+                className="absolute bottom-24 -left-4 bg-white rounded-2xl p-5 shadow-xl shadow-ocean/10 flex items-center gap-4 border border-border/50"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                 whileHover={{ scale: 1.05 }}

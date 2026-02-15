@@ -91,7 +91,7 @@ export default function WaterTestForm() {
       <div className="relative group">
         <label
           className={cn(
-            'absolute left-4 top-0 -translate-y-1/2 pointer-events-none',
+            'absolute left-4 top-0 -translate-y-1/2 pointer-events-none z-10',
             'text-[11px] px-2 bg-white text-text-mid font-semibold',
             'transition-colors duration-200 group-focus-within:text-cyan'
           )}
