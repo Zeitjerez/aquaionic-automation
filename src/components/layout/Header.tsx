@@ -67,13 +67,59 @@ export default function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-black/[0.04]">
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[72px]">
+          <div className="flex items-center justify-between gap-3 h-[72px]">
             {/* Logo */}
-            <Link href={locale === 'en' ? '/' : '/es/inicio'}>
-              <span className="font-jakarta font-extrabold text-[24px] tracking-[-0.04em] bg-gradient-to-r from-deep-blue via-ocean to-cyan bg-clip-text text-transparent">
+            <Link href={locale === 'en' ? '/' : '/es/inicio'} className="flex-shrink-0">
+              <span className="font-jakarta font-extrabold text-[20px] sm:text-[24px] tracking-[-0.04em] bg-gradient-to-r from-deep-blue via-ocean to-cyan bg-clip-text text-transparent">
                 AQUAIONIC
               </span>
             </Link>
+
+            {/* Mobile Actions - Language + CTA + Menu */}
+            <div className="flex lg:hidden items-center gap-2">
+              {/* Mobile Language Switcher */}
+              <div className="flex items-center gap-0.5 p-0.5 bg-ghost rounded-full border border-gray-200">
+                <Link
+                  href={getLocalizedPath('en')}
+                  className={cn(
+                    "px-2 py-1 text-[11px] font-bold rounded-full transition-all duration-200",
+                    locale === 'en'
+                      ? "bg-cyan text-white"
+                      : "text-text-mid"
+                  )}
+                >
+                  EN
+                </Link>
+                <Link
+                  href={getLocalizedPath('es')}
+                  className={cn(
+                    "px-2 py-1 text-[11px] font-bold rounded-full transition-all duration-200",
+                    locale === 'es'
+                      ? "bg-cyan text-white"
+                      : "text-text-mid"
+                  )}
+                >
+                  ES
+                </Link>
+              </div>
+
+              {/* Mobile CTA */}
+              <Link
+                href="#water-test"
+                className="px-3 py-1.5 bg-cyan text-white text-[11px] font-bold rounded-full hover:bg-cyan-soft transition-colors whitespace-nowrap"
+              >
+                {locale === 'en' ? 'Free Test' : 'Prueba'}
+              </Link>
+
+              {/* Hamburger */}
+              <button
+                onClick={() => setMobileOpen(true)}
+                className="p-2 text-deep-blue"
+                aria-label="Open menu"
+              >
+                <Menu size={22} />
+              </button>
+            </div>
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8">
@@ -164,15 +210,6 @@ export default function Header() {
                 {t('cta')}
               </Link>
             </nav>
-
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2 text-deep-blue"
-              aria-label="Open menu"
-            >
-              <Menu size={24} />
-            </button>
           </div>
         </div>
       </header>
@@ -204,7 +241,25 @@ export default function Header() {
                     <X size={24} />
                   </button>
                 </div>
-                <nav className="flex-1 p-6 space-y-1">
+                <nav className="flex-1 p-6 space-y-1 overflow-y-auto">
+                  {/* Services Section */}
+                  <div className="mb-4">
+                    <div className="px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-text-light">
+                      {t('nav.services')}
+                    </div>
+                    {services.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block px-4 py-2.5 rounded-lg text-[14px] font-medium text-text-mid hover:bg-ghost hover:text-cyan transition-colors"
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </div>
+
+                  {/* Other Nav Items */}
                   {navItems.map((item) => (
                     <Link
                       key={item.href}
@@ -216,44 +271,11 @@ export default function Header() {
                     </Link>
                   ))}
                 </nav>
-                <div className="p-6 border-t border-border space-y-3">
+                <div className="p-6 border-t border-border">
                   <a href="tel:+13054671525" className="flex items-center justify-center gap-2 py-3 text-text-mid font-medium">
                     <Phone size={16} />
                     (305) 467-1525
                   </a>
-
-                  {/* Mobile Language Switcher */}
-                  <div className="flex items-center gap-2 p-1 bg-ghost rounded-xl border border-gray-200">
-                    <Link
-                      href={getLocalizedPath('en')}
-                      className={cn(
-                        "flex-1 text-center px-4 py-2.5 text-[14px] font-semibold rounded-lg transition-all duration-200",
-                        locale === 'en'
-                          ? "bg-cyan text-white shadow-sm"
-                          : "text-text-mid"
-                      )}
-                    >
-                      English
-                    </Link>
-                    <Link
-                      href={getLocalizedPath('es')}
-                      className={cn(
-                        "flex-1 text-center px-4 py-2.5 text-[14px] font-semibold rounded-lg transition-all duration-200",
-                        locale === 'es'
-                          ? "bg-cyan text-white shadow-sm"
-                          : "text-text-mid"
-                      )}
-                    >
-                      Español
-                    </Link>
-                  </div>
-
-                  <Link
-                    href="#water-test"
-                    className="block text-center py-3.5 bg-cyan text-white font-semibold rounded-xl hover:bg-cyan-soft transition-colors"
-                  >
-                    {t('cta')}
-                  </Link>
                 </div>
               </div>
             </motion.div>
