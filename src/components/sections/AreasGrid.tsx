@@ -34,7 +34,7 @@ export default function AreasGrid() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-16 md:py-20 bg-ghost">
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-14">
           <ScrollReveal>
@@ -60,11 +60,11 @@ export default function AreasGrid() {
               }}
             >
               <Link href={area.href} className="group block">
-                <div className="text-center p-8 rounded-2xl border border-gray-100 bg-white hover:border-gray-200 transition-colors duration-200">
-                  <div className="w-12 h-12 rounded-xl bg-cyan/10 mx-auto mb-4 flex items-center justify-center group-hover:bg-cyan/15 transition-colors duration-200">
+                <div className="text-center p-8 rounded-2xl border border-gray-100 bg-white hover:border-cyan/20 hover:shadow-md transition-all duration-200">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan/20 to-ocean/10 mx-auto mb-4 flex items-center justify-center group-hover:from-cyan/30 group-hover:to-ocean/20 transition-all duration-200">
                     <MapPin size={20} className="text-cyan" strokeWidth={2.5} />
                   </div>
-                  <h3 className="text-lg font-jakarta font-bold text-deep-blue mb-1">{area.city}</h3>
+                  <h3 className="text-lg font-jakarta font-bold text-deep-blue mb-1 group-hover:text-cyan transition-colors duration-200">{area.city}</h3>
                   <span className="text-[13px] text-gray-500 font-medium">{area.county}</span>
                 </div>
               </Link>

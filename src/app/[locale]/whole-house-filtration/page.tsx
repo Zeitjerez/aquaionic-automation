@@ -128,7 +128,7 @@ export default function WholeHouseFiltrationPage({ params: { locale } }: PagePro
 
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="relative py-20 md:py-28 bg-gradient-to-br from-emerald-900 via-teal-700 to-cyan overflow-hidden">
+        <section className="relative py-16 md:py-20 bg-gradient-to-br from-emerald-900 via-teal-700 to-cyan overflow-hidden">
           <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
           <div className="absolute top-20 left-10 w-72 h-72 bg-cyan/30 rounded-full blur-3xl animate-drift"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/30 rounded-full blur-3xl animate-drift-reverse"></div>
