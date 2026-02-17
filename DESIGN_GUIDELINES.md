@@ -1,114 +1,127 @@
 # AquaIonic Design Guidelines
-## Creative System for Consistent Branding
+## Reglas y Restricciones para Mantener Consistencia
+
+> **📘 Documento Base**: Este archivo complementa [AQUAIONIC-DESIGN-SYSTEM.md](./AQUAIONIC-DESIGN-SYSTEM.md)
+> Para templates de código y estructura de páginas, consulta el Design System principal.
 
 ---
 
-## 🎨 Color Palette
+## ⚠️ REGLAS CRÍTICAS
 
-### Primary Colors
+### 1. Espaciado Máximo
+**REGLA**: Nunca exceder `py-20` en section padding
+
 ```css
---deep-blue: #0a2540     /* Main brand color, headings */
---ocean: #1a5276         /* Mid-tone blue, gradients */
---ocean-mid: #1565a0     /* Alternative mid-tone */
---cyan: #00bcd4          /* Primary accent, CTAs, icons */
---cyan-soft: #26c6da     /* Hover states, highlights */
+✅ Correcto:
+py-16 md:py-20    /* Standard */
+py-12 md:py-16    /* Compact */
+
+❌ Incorrecto:
+py-24 md:py-32    /* Demasiado espaciado */
+py-20 lg:py-28    /* Excede el máximo */
 ```
 
-### Neutral Colors
-```css
---pure-white: #ffffff    /* Backgrounds, text on dark */
---ghost: #f7f9fc         /* Subtle background sections */
---ghost-warm: #fafbfe    /* Alternative light background */
---text: #1e2a3a          /* Primary text color */
---text-mid: #4a5568      /* Secondary text */
---text-light: #8494a7    /* Tertiary text, captions */
---border: rgba(10,37,64,0.06) /* Subtle borders */
+**Razón**: Mantiene la página compacta y evita espacios vacíos excesivos que dilluyen el contenido.
+
+### 2. Alternancia de Fondos
+Create visual rhythm by alternating backgrounds:
+
+```
+Hero (gradient)    → bg-gradient-to-br from-deep-blue via-ocean to-cyan
+↓
+Section 1 (light)  → bg-white or bg-ghost
+↓
+Section 2 (color)  → bg-gray-50 or bg-cyan-light
+↓
+Section 3 (light)  → bg-white
+↓
+CTA (dark)         → bg-gradient-to-br from-deep-blue via-ocean to-cyan
+↓
+Footer (dark)      → bg-deep-blue
 ```
 
-### Accent Colors
+**Nunca uses**:
+- 2 secciones con fondo oscuro consecutivas
+- 3+ secciones con el mismo fondo seguidas
+
+---
+
+## 🎨 Paleta de Colores (Referencia Rápida)
+
 ```css
---accent-green: #00c9a7  /* Success states, badges */
---cyan-glow: rgba(0,188,212,0.15) /* Shadows, glows */
+/* Primarios */
+--deep-blue: #0a2540
+--ocean: #1a5276
+--cyan: #00bcd4
+
+/* Acentos */
+--accent-green: #00c9a7
+--cyan-light: #e0f7fa
+
+/* Neutrales */
+--ghost: #f7f9fc
+--white: #ffffff
+--text: #1e2a3a
+--text-mid: #4a5568
+--text-light: #718096
+--border: #e2e8f0
 ```
 
 ---
 
-## 📐 Typography
-
-### Font Families
-- **Headings**: `font-jakarta` (Plus Jakarta Sans)
-- **Body**: `font-dm` (DM Sans)
-
-### Heading Styles
-```css
-h1: text-5xl md:text-6xl lg:text-7xl, line-height: 1.1, tracking: -0.02em
-h2: text-4xl md:text-5xl lg:text-6xl, line-height: 1.15, tracking: -0.02em
-h3: text-2xl md:text-3xl lg:text-4xl, line-height: 1.2
-h4: text-xl md:text-2xl, line-height: 1.3
-p:  text-base md:text-lg, line-height: 1.7
-```
-
-### Logo
-```tsx
-<span className="font-jakarta font-extrabold text-[24px] tracking-[-0.04em]
-  bg-gradient-to-r from-deep-blue via-ocean to-cyan bg-clip-text text-transparent">
-  AQUAIONIC
-</span>
-```
-
----
-
-## 📏 Spacing & Layout
+## 📐 Espaciado y Layout
 
 ### Container
 ```css
-max-w-[1200px] (or max-w-container)
-px-4 sm:px-6 lg:px-8
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;        /* px-4 */
+}
+
+@media (min-width: 640px) {
+  padding: 0 1.5rem;      /* sm:px-6 */
+}
+
+@media (min-width: 1024px) {
+  padding: 0 2rem;        /* lg:px-8 */
+}
 ```
 
-### Section Padding
-**REGLA**: Nunca exceder `py-20`
+### Section Padding Standard
 ```css
 Standard: py-16 md:py-20
-Compact: py-12 md:py-16
-Large: py-16 md:py-20 (máximo)
+Compact:  py-12 md:py-16
+Large:    py-16 md:py-20  (máximo permitido)
 ```
 
-### Section Gap
+### Grid Gaps
 ```css
-Between sections: No extra margin (rely on py padding)
-Grid gaps: gap-6 (standard), gap-4 (compact)
+Standard: gap-6
+Compact:  gap-4
+Large:    gap-8
 ```
 
 ---
 
-## 🎭 Section Backgrounds
-
-### Alternating Pattern
-Create visual rhythm by alternating backgrounds:
-```
-Hero (white) → TrustBar (ghost) → Services (gray-50) →
-WaterTest (dark gradient) → Areas (ghost) → Footer (deep-blue)
-```
-
-### Background Types
-1. **White**: `bg-white` - Clean, default
-2. **Ghost**: `bg-ghost` - Subtle contrast
-3. **Gray**: `bg-gray-50` - Light distinction
-4. **Dark Gradient**: `bg-gradient-to-br from-deep-blue via-ocean to-deep-blue`
-5. **Dark Solid**: `bg-deep-blue` - Footer, dark sections
-
----
-
-## 🎬 Animations
+## 🎬 Animaciones
 
 ### Breathe (CTAs)
 ```css
 @keyframes breathe {
-  0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(0,188,212,0.15); }
-  50% { transform: scale(1.03); box-shadow: 0 6px 20px rgba(0,188,212,0.3); }
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(0,188,212,0.15);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,188,212,0.3);
+  }
 }
-.animate-breathe { animation: breathe 3s ease-in-out infinite; }
+
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
 ```
 
 ### Icon Float
@@ -118,62 +131,16 @@ WaterTest (dark gradient) → Areas (ghost) → Footer (deep-blue)
   25% { transform: translateY(-3px) rotate(-2deg); }
   75% { transform: translateY(-3px) rotate(2deg); }
 }
-.animate-icon-float { animation: iconFloat 4s ease-in-out infinite; }
+
+.animate-icon-float {
+  animation: iconFloat 4s ease-in-out infinite;
+}
 ```
 
-### Usage
+### Usage Guidelines
 - **CTAs**: Apply `animate-breathe` to primary buttons
 - **Icons**: Use `animate-icon-float` on hover for playful effect
-- **Cards**: `hover:translate-y-[-4px]` with `transition-all duration-200`
-
----
-
-## 🎯 Component Patterns
-
-### Cards
-```tsx
-<div className="bg-white rounded-2xl border border-gray-100
-  hover:border-cyan/20 hover:shadow-md transition-all duration-200 p-6 md:p-8">
-  {/* Content */}
-</div>
-```
-
-### Icon Container
-```tsx
-<div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan/20 to-ocean/10
-  flex items-center justify-center hover:from-cyan/30 hover:to-ocean/20
-  transition-all duration-200">
-  <Icon size={20} className="text-cyan" />
-</div>
-```
-
-### Buttons
-
-#### Primary (CTA)
-```tsx
-<button className="px-6 py-2.5 bg-cyan hover:bg-cyan-soft text-white
-  text-[13.5px] font-semibold rounded-full transition-all duration-200
-  animate-breathe">
-  Free Water Test
-</button>
-```
-
-#### Secondary
-```tsx
-<button className="px-6 py-2.5 bg-transparent border-2 border-gray-200
-  text-deep-blue font-semibold rounded-xl hover:border-cyan hover:text-cyan
-  transition-colors duration-200">
-  Learn More
-</button>
-```
-
-#### Outline
-```tsx
-<button className="px-6 py-2.5 bg-white border border-gray-200 text-deep-blue
-  hover:border-cyan hover:bg-cyan hover:text-white transition-all duration-200">
-  Explore
-</button>
-```
+- **Cards**: `hover:-translate-y-1` with `transition-all duration-200`
 
 ---
 
@@ -187,6 +154,11 @@ WaterTest (dark gradient) → Areas (ghost) → Footer (deep-blue)
 </span>
 ```
 
+También disponible como clase:
+```tsx
+<span className="section-label">Label Text</span>
+```
+
 ### Badge
 ```tsx
 <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full
@@ -194,6 +166,177 @@ WaterTest (dark gradient) → Areas (ghost) → Footer (deep-blue)
   <Icon size={14} /> Certified
 </span>
 ```
+
+---
+
+## 🌊 Scroll Animations
+
+### Using ScrollReveal Component
+```tsx
+import ScrollReveal from '@/components/ui/ScrollReveal';
+
+<ScrollReveal delay={0.1}>
+  <h2>Content appears on scroll</h2>
+</ScrollReveal>
+```
+
+### Delay Pattern
+```tsx
+First element:  delay={0}   or no delay
+Second:         delay={0.1}
+Third:          delay={0.15}
+Fourth:         delay={0.2}
+```
+
+**No exceder**: `delay={0.3}` (se siente lento)
+
+---
+
+## 🎯 Interactive States
+
+### Hover Effects
+
+#### Cards
+```css
+hover:border-cyan/20
+hover:shadow-md
+hover:-translate-y-1
+transition-all duration-200
+```
+
+#### Icons
+```css
+group-hover:text-cyan
+group-hover:scale-110
+group-hover:rotate-5
+transition-all duration-200
+```
+
+#### Links
+```css
+hover:text-cyan
+transition-colors duration-200
+```
+
+#### Buttons
+```tsx
+/* Primary */
+<button className="px-6 py-2.5 bg-cyan hover:bg-cyan-soft text-white
+  text-[13.5px] font-semibold rounded-full transition-all duration-200
+  animate-breathe">
+  Free Water Test
+</button>
+
+/* Secondary */
+<button className="px-6 py-2.5 bg-transparent border-2 border-gray-200
+  text-deep-blue font-semibold rounded-xl hover:border-cyan hover:text-cyan
+  transition-colors duration-200">
+  Learn More
+</button>
+```
+
+---
+
+## 🚫 Don't Do
+
+### ❌ Avoid
+
+| Don't | Why | Instead |
+|-------|-----|---------|
+| Excessive shadows (3+ layers) | Too heavy, distracting | Max 1-2 subtle shadows |
+| Multiple shine/glow effects | Visual clutter | One effect per element |
+| Rotation beyond 10deg | Looks broken | Gentle 2-5deg rotations |
+| Scale beyond 1.1 | Too aggressive | Use 1.03-1.05 |
+| Padding larger than py-20 | Wastes space | Stick to py-16 md:py-20 |
+| 3+ colors in gradient | Too busy | 2-3 colors max |
+| Pulse/ping animations | Too distracting | Use breathe instead |
+| Complex transform combos | Performance issues | Single transform property |
+| Bright neon colors | Unprofessional | Muted, professional cyan |
+
+### ✅ Instead
+
+| Best Practice | Implementation |
+|--------------|----------------|
+| Single, subtle shadow | `shadow-md` or `shadow-lg` |
+| One effect per interaction | Either scale OR rotate, not both |
+| Gentle rotations | `rotate-2` or `hover:rotate-3` |
+| Minimal scale | `scale-105` or `hover:scale-[1.03]` |
+| Consistent spacing | Use py-16 md:py-20 exclusively |
+| Simple gradients | 2-3 colors: from-color via-color to-color |
+| Breathe for emphasis | `animate-breathe` on CTAs only |
+| Single transform | `hover:-translate-y-1` OR `hover:scale-105` |
+| Muted professional | Use --cyan (#00bcd4) not bright cyan |
+
+---
+
+## 🎯 Brand Personality
+
+**Minimalista pero NO insípido** (Minimal but NOT bland)
+
+### Principles
+
+1. **Clean**: White space is intentional, not accidental
+2. **Confident**: Bold typography, clear hierarchy
+3. **Professional**: Subtle, purposeful animations
+4. **Modern**: Contemporary design patterns (2024-2026)
+5. **Trustworthy**: Consistent, predictable interactions
+6. **Approachable**: Warm cyan accent, friendly copy
+7. **Premium**: Quality over quantity in effects
+
+### Voice
+
+- **Direct and clear** - No fluff, get to the point
+- **Technically credible** - Speak with authority
+- **Helpful, not salesy** - Educate before selling
+- **Confident without arrogance** - Assertive, not pushy
+- **Benefit-focused** - What the customer gains
+
+---
+
+## 📚 Component Library Reference
+
+### Core Components
+```
+ScrollReveal      - Scroll-based animations (delay prop)
+AnimatedCounter   - Number counting on scroll
+Button            - Consistent button styles (primary/secondary)
+Input             - Form field styling
+ServiceCard       - Service grid cards (icon, title, desc)
+TrustBar          - Certification badges (2x2 grid on mobile)
+```
+
+### Layout Components
+```
+Header            - Navigation with language dropdown
+Footer            - Links and branding
+Container         - max-w-[1200px] wrapper
+```
+
+### Section Components
+```
+HeroSection       - Full-width hero with gradient
+CTASection        - Call-to-action with gradient background
+FeaturesGrid      - 2/3/4 column feature cards
+ProcessSteps      - Numbered step-by-step flow
+```
+
+---
+
+## 📋 Section Checklist
+
+When creating a new section, ensure:
+
+- [ ] Consistent padding: `py-16 md:py-20` (never exceed)
+- [ ] Container: `max-w-container mx-auto px-4 sm:px-6 lg:px-8`
+- [ ] Background alternates from previous section
+- [ ] Headings use `font-jakarta font-extrabold text-deep-blue`
+- [ ] Body text uses `text-text-mid` (not text-gray-600)
+- [ ] Cards have `rounded-2xl border border-border`
+- [ ] Hover states present but subtle
+- [ ] Icons are `text-cyan` with proper sizing (w-6 h-6 or w-8 h-8)
+- [ ] CTAs have `animate-breathe` if primary
+- [ ] Responsive grid with proper gaps (gap-6 standard)
+- [ ] ScrollReveal animations with staggered delays (0.1, 0.15, 0.2)
 
 ---
 
@@ -212,11 +355,13 @@ WaterTest (dark gradient) → Areas (ghost) → Footer (deep-blue)
 ```
 
 ### Breakpoints
-- `sm:` 640px (mobile landscape)
-- `md:` 768px (tablets)
-- `lg:` 1024px (desktop)
-- `xl:` 1280px (large desktop)
-- `2xl:` 1400px (extra large)
+```css
+sm:  640px   /* Mobile landscape */
+md:  768px   /* Tablets */
+lg:  1024px  /* Desktop */
+xl:  1280px  /* Large desktop */
+2xl: 1536px  /* Extra large */
+```
 
 ---
 
@@ -224,7 +369,8 @@ WaterTest (dark gradient) → Areas (ghost) → Footer (deep-blue)
 
 ### Text Gradient (Headings)
 ```css
-bg-gradient-to-br from-cyan via-ocean to-deep-blue bg-clip-text text-transparent
+bg-gradient-to-br from-cyan via-ocean to-deep-blue
+bg-clip-text text-transparent
 ```
 
 ### Icon Container Gradient
@@ -235,143 +381,37 @@ hover:from-cyan/30 hover:to-ocean/20
 
 ### Background Gradient (Dark sections)
 ```css
-bg-gradient-to-br from-deep-blue via-ocean to-deep-blue
+bg-gradient-to-br from-deep-blue via-ocean to-cyan
 ```
 
-### With Orbs
+### With Decorative Orbs
 ```tsx
-<section className="relative bg-gradient-to-br from-deep-blue via-ocean to-deep-blue">
+<section className="relative bg-gradient-to-br from-deep-blue via-ocean to-cyan">
+  {/* Grid background */}
+  <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+
+  {/* Orbs */}
   <div className="absolute top-0 right-0 w-96 h-96 bg-cyan/20 rounded-full blur-3xl" />
-  <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan/10 rounded-full blur-3xl" />
+  <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent-green/10 rounded-full blur-3xl" />
+
   {/* Content */}
+  <div className="container-custom relative z-10">
+    {/* ... */}
+  </div>
 </section>
 ```
 
 ---
 
-## 🎯 Interactive States
+## 🔗 Recursos Relacionados
 
-### Hover Effects
-
-#### Cards
-```css
-hover:border-cyan/20 hover:shadow-md hover:-translate-y-1
-transition-all duration-200
-```
-
-#### Icons
-```css
-group-hover:text-cyan group-hover:scale-110 group-hover:rotate-5
-transition-all duration-200
-```
-
-#### Links
-```css
-hover:text-cyan transition-colors duration-200
-```
+- **[AQUAIONIC-DESIGN-SYSTEM.md](./AQUAIONIC-DESIGN-SYSTEM.md)** - Templates de código y estructura de páginas
+- **[AQUAIONIC-PAGE-TEMPLATES.tsx](./AQUAIONIC-PAGE-TEMPLATES.tsx)** - Templates copy/paste ready
+- **[tailwind.config.ts](./tailwind.config.ts)** - Configuración de colores, fonts, y animaciones
+- **[src/app/globals.css](./src/app/globals.css)** - Variables CSS y clases base
 
 ---
 
-## 🌊 Scroll Animations
-
-### Using ScrollReveal Component
-```tsx
-<ScrollReveal delay={0.1}>
-  <h2>Content appears on scroll</h2>
-</ScrollReveal>
-```
-
-**Delay Pattern**:
-- First element: `delay={0}` or no delay
-- Second: `delay={0.1}`
-- Third: `delay={0.15}`
-- Fourth: `delay={0.2}`
-
----
-
-## 📋 Section Checklist
-
-When creating a new section, ensure:
-
-- [ ] Consistent padding: `py-16 md:py-20`
-- [ ] Container: `max-w-container mx-auto px-4 sm:px-6 lg:px-8`
-- [ ] Background alternates from previous section
-- [ ] Headings use `font-jakarta font-bold text-deep-blue`
-- [ ] Body text uses `text-gray-600` or `text-text-mid`
-- [ ] Cards have `rounded-2xl border border-gray-100`
-- [ ] Hover states are subtle but present
-- [ ] Icons are `text-cyan` with proper sizing
-- [ ] CTAs have `animate-breathe` if primary
-- [ ] Responsive grid with proper gaps
-- [ ] ScrollReveal animations with staggered delays
-
----
-
-## 🚫 Don't Do
-
-❌ **Avoid**:
-- Excessive shadows (max 1-2 layers)
-- Multiple shine/glow effects per element
-- Rotation beyond 5-10 degrees
-- Scale beyond 1.1
-- Padding larger than `py-20`
-- More than 3 colors in a gradient
-- Pulse/ping animations (too distracting)
-- Complex transform combinations
-- Overly bright neon colors
-
-✅ **Instead**:
-- Single, subtle shadows
-- One effect per interaction
-- Gentle rotations (2-5deg)
-- Minimal scale (1.03-1.05)
-- Consistent spacing system
-- Simple gradients (2-3 colors)
-- Breathe animation for emphasis
-- Single transform property
-- Muted, professional cyan
-
----
-
-## 🎯 Brand Personality
-
-**Minimalista pero NO insípido** (Minimal but NOT bland)
-
-### Principles
-1. **Clean**: White space is intentional
-2. **Confident**: Bold typography, clear hierarchy
-3. **Professional**: Subtle, purposeful animations
-4. **Modern**: Contemporary design patterns
-5. **Trustworthy**: Consistent, predictable interactions
-6. **Approachable**: Warm cyan accent, friendly copy
-7. **Premium**: Quality over quantity in effects
-
-### Voice
-- Direct and clear
-- Technically credible
-- Helpful, not salesy
-- Confident without arrogance
-- Focused on benefits and outcomes
-
----
-
-## 📚 Component Library Reference
-
-### Core Components
-- `ScrollReveal` - Scroll-based animations
-- `AnimatedCounter` - Number counting on scroll
-- `Button` - Consistent button styles
-- `Input` - Form field styling
-- `ServiceCard` - Service grid cards
-- `TrustBar` - Certification badges
-
-### Layout Components
-- `Header` - Navigation with dropdown
-- `Footer` - Links and branding
-- `Container` - Consistent max-width wrapper
-
----
-
-**Version**: 1.0
+**Version**: 2.0 (Actualizado para complementar AQUAIONIC-DESIGN-SYSTEM.md)
 **Last Updated**: February 2026
 **Designed by**: [Flow Tool](https://flowtool.com)
