@@ -33,34 +33,34 @@ export default function Header() {
   const services = [
     {
       label: 'Well Water Treatment',
-      href: locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo'
+      href: locale === 'en' ? '/en/well-water-treatment' : '/es/tratamiento-agua-de-pozo'
     },
     {
       label: 'Iron & Sulfur Removal',
-      href: locale === 'en' ? '/iron-sulfur-removal' : '/es/eliminacion-hierro-azufre'
+      href: locale === 'en' ? '/en/iron-sulfur-removal' : '/es/eliminacion-hierro-azufre'
     },
     {
       label: 'Hard Water Solutions',
-      href: locale === 'en' ? '/hard-water-solutions' : '/es/soluciones-agua-dura'
+      href: locale === 'en' ? '/en/hard-water-solutions' : '/es/soluciones-agua-dura'
     },
     {
       label: 'Reverse Osmosis',
-      href: locale === 'en' ? '/reverse-osmosis-systems' : '/es/sistemas-osmosis-inversa'
+      href: locale === 'en' ? '/en/reverse-osmosis-systems' : '/es/sistemas-osmosis-inversa'
     },
     {
       label: 'Whole House Filtration',
-      href: locale === 'en' ? '/whole-house-filtration' : '/es/filtracion-casa-completa'
+      href: locale === 'en' ? '/en/whole-house-filtration' : '/es/filtracion-casa-completa'
     },
     {
       label: 'City Water Purification',
-      href: locale === 'en' ? '/city-water-purification' : '/es/purificacion-agua-ciudad'
+      href: locale === 'en' ? '/en/city-water-purification' : '/es/purificacion-agua-ciudad'
     },
   ];
 
   const navItems = [
-    { label: t('nav.about'), href: `/${locale === 'en' ? 'about' : 'es/nosotros'}` },
-    { label: t('nav.areas'), href: `/${locale === 'en' ? 'miami' : 'es/miami-es'}` },
-    { label: t('nav.shop'), href: `/${locale === 'en' ? 'shop' : 'es/tienda'}` },
+    { label: t('nav.about'), href: locale === 'en' ? '/en/about' : '/es/nosotros' },
+    { label: t('nav.areas'), href: locale === 'en' ? '/en/miami' : '/es/miami-es' },
+    { label: t('nav.shop'), href: locale === 'en' ? '/en/shop' : '/es/tienda' },
   ];
 
   return (
@@ -69,7 +69,7 @@ export default function Header() {
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-3 h-[72px]">
             {/* Logo */}
-            <Link href={locale === 'en' ? '/' : '/es/inicio'} className="flex-shrink-0">
+            <Link href={locale === 'en' ? '/en' : '/es'} className="flex-shrink-0">
               <span className="font-jakarta font-extrabold text-[20px] sm:text-[24px] tracking-[-0.04em] bg-gradient-to-r from-deep-blue via-ocean to-cyan bg-clip-text text-transparent">
                 AQUAIONIC
               </span>

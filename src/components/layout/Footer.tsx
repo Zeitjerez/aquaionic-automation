@@ -8,26 +8,26 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const serviceLinks = [
-    { label: t('services.wellWater'), href: locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo' },
-    { label: t('services.ironSulfur'), href: locale === 'en' ? '/iron-sulfur-removal' : '/es/eliminacion-hierro-azufre' },
-    { label: t('services.waterSoftener'), href: locale === 'en' ? '/water-softener-installation' : '/es/instalacion-ablandadores' },
-    { label: t('services.reverseOsmosis'), href: locale === 'en' ? '/reverse-osmosis-system' : '/es/sistema-osmosis-inversa' },
-    { label: t('services.wholeHouse'), href: locale === 'en' ? '/whole-house-water-filtration' : '/es/filtracion-agua-toda-casa' },
+    { label: t('services.wellWater'), href: locale === 'en' ? '/en/well-water-treatment' : '/es/tratamiento-agua-de-pozo' },
+    { label: t('services.ironSulfur'), href: locale === 'en' ? '/en/iron-sulfur-removal' : '/es/eliminacion-hierro-azufre' },
+    { label: t('services.waterSoftener'), href: locale === 'en' ? '/en/water-softener-installation' : '/es/instalacion-ablandadores' },
+    { label: t('services.reverseOsmosis'), href: locale === 'en' ? '/en/reverse-osmosis-systems' : '/es/sistemas-osmosis-inversa' },
+    { label: t('services.wholeHouse'), href: locale === 'en' ? '/en/whole-house-filtration' : '/es/filtracion-casa-completa' },
   ];
 
   const areaLinks = [
-    { label: t('areas.miami'), href: locale === 'en' ? '/miami' : '/es/miami-es' },
-    { label: t('areas.bocaRaton'), href: locale === 'en' ? '/boca-raton' : '/es/boca-raton-es' },
-    { label: t('areas.fortLauderdale'), href: locale === 'en' ? '/fort-lauderdale' : '/es/fort-lauderdale-es' },
-    { label: t('areas.palmBeach'), href: locale === 'en' ? '/palm-beach' : '/es/palm-beach-es' },
+    { label: t('areas.miami'), href: locale === 'en' ? '/en/miami' : '/es/miami-es' },
+    { label: t('areas.bocaRaton'), href: locale === 'en' ? '/en/boca-raton' : '/es/boca-raton-es' },
+    { label: t('areas.fortLauderdale'), href: locale === 'en' ? '/en/fort-lauderdale' : '/es/fort-lauderdale-es' },
+    { label: t('areas.palmBeach'), href: locale === 'en' ? '/en/palm-beach' : '/es/palm-beach-es' },
   ];
 
   const companyLinks = [
-    { label: t('company.about'), href: locale === 'en' ? '/about' : '/es/nosotros' },
-    { label: t('company.blog'), href: locale === 'en' ? '/blog' : '/es/blog-es' },
-    { label: t('company.contact'), href: locale === 'en' ? '/contact' : '/es/contacto' },
-    { label: t('company.privacy'), href: locale === 'en' ? '/privacy-policy' : '/es/politica-privacidad' },
-    { label: t('company.refund'), href: locale === 'en' ? '/refund-policy' : '/es/politica-reembolso' },
+    { label: t('company.about'), href: locale === 'en' ? '/en/about' : '/es/nosotros' },
+    { label: t('company.blog'), href: locale === 'en' ? '/en/blog' : '/es/blog-es' },
+    { label: t('company.contact'), href: locale === 'en' ? '/en/contact' : '/es/contacto' },
+    { label: t('company.privacy'), href: locale === 'en' ? '/en/privacy-policy' : '/es/politica-privacidad' },
+    { label: t('company.refund'), href: locale === 'en' ? '/en/refund-policy' : '/es/politica-reembolso' },
   ];
 
   return (
@@ -36,7 +36,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link href={locale === 'en' ? '/' : '/es/inicio'} className="inline-block mb-4">
+            <Link href={locale === 'en' ? '/en' : '/es'} className="inline-block mb-4">
               <span className="font-jakarta font-extrabold text-[24px] tracking-[-0.04em] bg-gradient-to-r from-white via-cyan-soft to-cyan bg-clip-text text-transparent">
                 AQUAIONIC
               </span>

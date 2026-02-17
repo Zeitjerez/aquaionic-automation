@@ -48,7 +48,7 @@ export default function Hero() {
                 </Link>
 
                 <Link
-                  href={locale === 'en' ? '/well-water-treatment' : '/es/tratamiento-agua-de-pozo'}
+                  href={locale === 'en' ? '/en/well-water-treatment' : '/es/tratamiento-agua-de-pozo'}
                   className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-transparent border-2 border-gray-200 text-deep-blue font-semibold text-[15px] rounded-xl hover:border-cyan hover:text-cyan transition-colors duration-200"
                 >
                   {t('ctaSecondary')}
