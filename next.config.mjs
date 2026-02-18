@@ -34,6 +34,7 @@ const nextConfig = {
       { source: '/es/mi-cuenta', destination: '/es/my-account' },
       { source: '/es/politica-de-privacidad', destination: '/es/privacy-policy' },
       { source: '/es/politica-de-reembolso', destination: '/es/refund-policy' },
+      { source: '/es/contacto', destination: '/es/contact' },
     ];
   },
 

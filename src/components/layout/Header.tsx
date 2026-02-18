@@ -57,6 +57,7 @@ export default function Header() {
     { label: t('nav.about'), href: locale === 'en' ? '/en/about' : '/es/nosotros' },
     { label: t('nav.areas'), href: locale === 'en' ? '/en/miami' : '/es/miami' },
     { label: t('nav.shop'), href: locale === 'en' ? '/en/shop' : '/es/tienda' },
+    { label: locale === 'en' ? 'Contact' : 'Contacto', href: locale === 'en' ? '/en/contact' : '/es/contacto' },
   ];
 
   return (
