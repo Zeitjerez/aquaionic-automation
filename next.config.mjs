@@ -18,6 +18,13 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
+  // Redirect root / → /en (middleware handles locale, but vercel.json catch-all can block it)
+  async redirects() {
+    return [
+      { source: '/', destination: '/en', permanent: false },
+    ];
+  },
+
   // Rewrites: map Spanish slugs → internal English routes
   async rewrites() {
     return [
