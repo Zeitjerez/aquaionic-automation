@@ -18,14 +18,22 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Redirects for proper routing
-  async redirects() {
+  // Rewrites: map Spanish slugs → internal English routes
+  async rewrites() {
     return [
-      {
-        source: '/',
-        destination: '/en',
-        permanent: false,
-      },
+      { source: '/es/tratamiento-agua-de-pozo', destination: '/es/well-water-treatment' },
+      { source: '/es/eliminacion-hierro-azufre', destination: '/es/iron-sulfur-removal' },
+      { source: '/es/soluciones-agua-dura', destination: '/es/hard-water-solutions' },
+      { source: '/es/sistemas-osmosis-inversa', destination: '/es/reverse-osmosis-systems' },
+      { source: '/es/filtracion-toda-la-casa', destination: '/es/whole-house-filtration' },
+      { source: '/es/purificacion-agua-ciudad', destination: '/es/city-water-purification' },
+      { source: '/es/nosotros', destination: '/es/about' },
+      { source: '/es/tienda', destination: '/es/shop' },
+      { source: '/es/carrito', destination: '/es/cart' },
+      { source: '/es/finalizar-compra', destination: '/es/checkout' },
+      { source: '/es/mi-cuenta', destination: '/es/my-account' },
+      { source: '/es/politica-de-privacidad', destination: '/es/privacy-policy' },
+      { source: '/es/politica-de-reembolso', destination: '/es/refund-policy' },
     ];
   },
 

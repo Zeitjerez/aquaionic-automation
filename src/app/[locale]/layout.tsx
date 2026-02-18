@@ -45,8 +45,68 @@ export default async function LocaleLayout({
   // Get messages for the locale
   const messages = await getMessages();
 
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': 'https://aquaionic.us/#business',
+    name: 'Aquaionic',
+    description:
+      'Professional water purification systems for South Florida homes. Well water treatment, reverse osmosis, whole house filtration. NSF/FDA certified.',
+    url: 'https://aquaionic.us',
+    telephone: '+13054671525',
+    email: 'info@aquaionic.us',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Boca Raton',
+      addressRegion: 'FL',
+      addressCountry: 'US',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Miami' },
+      { '@type': 'City', name: 'Boca Raton' },
+      { '@type': 'City', name: 'Fort Lauderdale' },
+      { '@type': 'City', name: 'West Palm Beach' },
+    ],
+    knowsAbout: [
+      'Well Water Treatment',
+      'Reverse Osmosis Systems',
+      'Whole House Water Filtration',
+      'Iron and Sulfur Removal',
+      'Hard Water Solutions',
+      'Water Purification Florida',
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Water Purification Services',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Well Water Treatment' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Reverse Osmosis Systems' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Whole House Filtration' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Iron & Sulfur Removal' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hard Water Solutions' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'City Water Purification' } },
+      ],
+    },
+    sameAs: ['https://aquaionic.us'],
+    priceRange: '$$',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+    ],
+  };
+
   return (
     <html lang={locale} className={`${jakarta.variable} ${dmSans.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
       <body className="font-dm">
         <NextIntlClientProvider messages={messages}>
           {/* Ambient background */}

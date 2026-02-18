@@ -12,22 +12,22 @@ export default function Footer() {
     { label: t('services.ironSulfur'), href: locale === 'en' ? '/en/iron-sulfur-removal' : '/es/eliminacion-hierro-azufre' },
     { label: t('services.waterSoftener'), href: locale === 'en' ? '/en/water-softener-installation' : '/es/instalacion-ablandadores' },
     { label: t('services.reverseOsmosis'), href: locale === 'en' ? '/en/reverse-osmosis-systems' : '/es/sistemas-osmosis-inversa' },
-    { label: t('services.wholeHouse'), href: locale === 'en' ? '/en/whole-house-filtration' : '/es/filtracion-casa-completa' },
+    { label: t('services.wholeHouse'), href: locale === 'en' ? '/en/whole-house-filtration' : '/es/filtracion-toda-la-casa' },
   ];
 
   const areaLinks = [
-    { label: t('areas.miami'), href: locale === 'en' ? '/en/miami' : '/es/miami-es' },
-    { label: t('areas.bocaRaton'), href: locale === 'en' ? '/en/boca-raton' : '/es/boca-raton-es' },
-    { label: t('areas.fortLauderdale'), href: locale === 'en' ? '/en/fort-lauderdale' : '/es/fort-lauderdale-es' },
-    { label: t('areas.palmBeach'), href: locale === 'en' ? '/en/palm-beach' : '/es/palm-beach-es' },
+    { label: t('areas.miami'), href: locale === 'en' ? '/en/miami' : '/es/miami' },
+    { label: t('areas.bocaRaton'), href: locale === 'en' ? '/en/boca-raton' : '/es/boca-raton' },
+    { label: t('areas.fortLauderdale'), href: locale === 'en' ? '/en/fort-lauderdale' : '/es/fort-lauderdale' },
+    { label: t('areas.palmBeach'), href: locale === 'en' ? '/en/palm-beach' : '/es/palm-beach' },
   ];
 
   const companyLinks = [
     { label: t('company.about'), href: locale === 'en' ? '/en/about' : '/es/nosotros' },
     { label: t('company.blog'), href: locale === 'en' ? '/en/blog' : '/es/blog-es' },
     { label: t('company.contact'), href: locale === 'en' ? '/en/contact' : '/es/contacto' },
-    { label: t('company.privacy'), href: locale === 'en' ? '/en/privacy-policy' : '/es/politica-privacidad' },
-    { label: t('company.refund'), href: locale === 'en' ? '/en/refund-policy' : '/es/politica-reembolso' },
+    { label: t('company.privacy'), href: locale === 'en' ? '/en/privacy-policy' : '/es/politica-de-privacidad' },
+    { label: t('company.refund'), href: locale === 'en' ? '/en/refund-policy' : '/es/politica-de-reembolso' },
   ];
 
   return (

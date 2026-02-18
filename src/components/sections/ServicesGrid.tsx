@@ -41,7 +41,7 @@ export default function ServicesGrid() {
       icon: 'Home',
       title: t('items.wholeHouse.title'),
       desc: t('items.wholeHouse.description'),
-      href: locale === 'en' ? '/en/whole-house-filtration' : '/es/filtracion-casa-completa',
+      href: locale === 'en' ? '/en/whole-house-filtration' : '/es/filtracion-toda-la-casa',
       image: '/images/services/water-testing.jpg',
     },
     {

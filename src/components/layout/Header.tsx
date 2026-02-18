@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { usePathname } from 'next/navigation';
+import { Link as LocaleLink, usePathname } from '@/lib/i18n/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, ChevronDown, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -12,6 +12,8 @@ import { cn } from '@/lib/utils';
 export default function Header() {
   const t = useTranslations('header');
   const locale = useLocale();
+  // usePathname from next-intl returns canonical internal path (e.g. '/well-water-treatment')
+  // regardless of current locale — used for the language switcher
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -23,12 +25,6 @@ export default function Header() {
   }, []);
 
   const [servicesOpen, setServicesOpen] = useState(false);
-
-  // Get the path without locale prefix for language switching
-  const getLocalizedPath = (newLocale: string) => {
-    const pathWithoutLocale = pathname.replace(/^\/(en|es)/, '') || '/';
-    return `/${newLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
-  };
 
   const services = [
     {
@@ -49,7 +45,7 @@ export default function Header() {
     },
     {
       label: 'Whole House Filtration',
-      href: locale === 'en' ? '/en/whole-house-filtration' : '/es/filtracion-casa-completa'
+      href: locale === 'en' ? '/en/whole-house-filtration' : '/es/filtracion-toda-la-casa'
     },
     {
       label: 'City Water Purification',
@@ -59,7 +55,7 @@ export default function Header() {
 
   const navItems = [
     { label: t('nav.about'), href: locale === 'en' ? '/en/about' : '/es/nosotros' },
-    { label: t('nav.areas'), href: locale === 'en' ? '/en/miami' : '/es/miami-es' },
+    { label: t('nav.areas'), href: locale === 'en' ? '/en/miami' : '/es/miami' },
     { label: t('nav.shop'), href: locale === 'en' ? '/en/shop' : '/es/tienda' },
   ];
 
@@ -79,8 +75,9 @@ export default function Header() {
             <div className="flex lg:hidden items-center gap-2">
               {/* Mobile Language Switcher */}
               <div className="flex items-center gap-0.5 p-0.5 bg-ghost rounded-full border border-gray-200">
-                <Link
-                  href={getLocalizedPath('en')}
+                <LocaleLink
+                  href={pathname}
+                  locale="en"
                   className={cn(
                     "px-2 py-1 text-[11px] font-bold rounded-full transition-all duration-200",
                     locale === 'en'
@@ -89,9 +86,10 @@ export default function Header() {
                   )}
                 >
                   EN
-                </Link>
-                <Link
-                  href={getLocalizedPath('es')}
+                </LocaleLink>
+                <LocaleLink
+                  href={pathname}
+                  locale="es"
                   className={cn(
                     "px-2 py-1 text-[11px] font-bold rounded-full transition-all duration-200",
                     locale === 'es'
@@ -100,7 +98,7 @@ export default function Header() {
                   )}
                 >
                   ES
-                </Link>
+                </LocaleLink>
               </div>
 
               {/* Mobile CTA */}
@@ -179,8 +177,9 @@ export default function Header() {
 
               {/* Language Switcher */}
               <div className="flex items-center gap-1 p-1 bg-ghost rounded-full border border-gray-200">
-                <Link
-                  href={getLocalizedPath('en')}
+                <LocaleLink
+                  href={pathname}
+                  locale="en"
                   className={cn(
                     "px-3 py-1.5 text-[13px] font-semibold rounded-full transition-all duration-200",
                     locale === 'en'
@@ -189,9 +188,10 @@ export default function Header() {
                   )}
                 >
                   EN
-                </Link>
-                <Link
-                  href={getLocalizedPath('es')}
+                </LocaleLink>
+                <LocaleLink
+                  href={pathname}
+                  locale="es"
                   className={cn(
                     "px-3 py-1.5 text-[13px] font-semibold rounded-full transition-all duration-200",
                     locale === 'es'
@@ -200,7 +200,7 @@ export default function Header() {
                   )}
                 >
                   ES
-                </Link>
+                </LocaleLink>
               </div>
 
               <Link

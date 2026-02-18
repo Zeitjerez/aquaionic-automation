@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Disallow non-public pages
+Disallow: /api/
+Disallow: /*/cart
+Disallow: /*/checkout
+Disallow: /*/my-account
+Disallow: /*/carrito
+Disallow: /*/finalizar-compra
+Disallow: /*/mi-cuenta
+
+Sitemap: https://aquaionic.us/sitemap.xml

@@ -14,22 +14,22 @@ export default function AreasGrid() {
     {
       city: t('locations.miami.city'),
       county: t('locations.miami.county'),
-      href: locale === 'en' ? '/en/miami' : '/es/miami-es',
+      href: locale === 'en' ? '/en/miami' : '/es/miami',
     },
     {
       city: t('locations.bocaRaton.city'),
       county: t('locations.bocaRaton.county'),
-      href: locale === 'en' ? '/en/boca-raton' : '/es/boca-raton-es',
+      href: locale === 'en' ? '/en/boca-raton' : '/es/boca-raton',
     },
     {
       city: t('locations.fortLauderdale.city'),
       county: t('locations.fortLauderdale.county'),
-      href: locale === 'en' ? '/en/fort-lauderdale' : '/es/fort-lauderdale-es',
+      href: locale === 'en' ? '/en/fort-lauderdale' : '/es/fort-lauderdale',
     },
     {
       city: t('locations.palmBeach.city'),
       county: t('locations.palmBeach.county'),
-      href: locale === 'en' ? '/en/palm-beach' : '/es/palm-beach-es',
+      href: locale === 'en' ? '/en/palm-beach' : '/es/palm-beach',
     },
   ];
 
