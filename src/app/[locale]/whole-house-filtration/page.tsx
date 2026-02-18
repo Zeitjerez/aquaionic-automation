@@ -1,6 +1,11 @@
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { getPageMetadata } from '@/lib/content/pages';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight, Droplets, ShieldCheck, Wrench, CheckCircle } from 'lucide-react';
+import ScrollReveal from '@/components/ui/ScrollReveal';
+import AnimatedCounter from '@/components/ui/AnimatedCounter';
 
 interface PageProps {
   params: { locale: string };
@@ -23,11 +28,7 @@ export async function generateMetadata({ params: { locale } }: PageProps): Promi
     : 'filtro agua toda la casa Florida, sistema filtración hogar completo, filtración agua hogar, filtro agua casa completa, filtro agua punto entrada, eliminación cloro toda casa, sistema filtro sedimentos, tratamiento agua hogar completo, protección electrodomésticos filtro agua, filtro toda casa Miami';
 
   if (!metadata) {
-    return {
-      title: defaultTitle,
-      description: defaultDescription,
-      keywords: keywords,
-    };
+    return { title: defaultTitle, description: defaultDescription, keywords };
   }
 
   return {
@@ -37,7 +38,7 @@ export async function generateMetadata({ params: { locale } }: PageProps): Promi
     alternates: {
       canonical: metadata.canonical,
       languages: {
-        'en': 'https://aquaionic.us/whole-house-filtration/',
+        'en': 'https://aquaionic.us/en/whole-house-filtration/',
         'es': 'https://aquaionic.us/es/filtracion-toda-la-casa/',
       },
     },
@@ -71,123 +72,165 @@ export default function WholeHouseFiltrationPage({ params: { locale } }: PagePro
   const content = {
     en: {
       badge: 'Complete Home Protection',
-      title: 'Whole House Water Filtration ',
-      highlight: 'Systems',
-      subtitle: 'Clean, filtered water from every tap, shower, and appliance in your South Florida home. Comprehensive point-of-entry filtration removes chlorine, sediment, chemicals, and contaminants throughout your entire house. Protect your family and extend appliance life.',
-      cta1: 'Free Water Test',
-      cta2: 'Call (305) 467-1525',
+      title: 'Whole House',
+      titleHighlight: 'Water Filtration',
+      subtitle: 'Clean, filtered water from every tap, shower, and appliance in your South Florida home. Comprehensive point-of-entry filtration removes chlorine, sediment, chemicals, and contaminants throughout your entire house.',
+      ctaPrimary: 'Get Free Water Test',
+      ctaSecondary: 'Call (305) 467-1525',
 
-      // Benefits Section
-      benefitsLabel: 'Every Tap Protected',
-      benefitsTitle: 'Complete Home Water Filtration for Florida',
-      benefitsSubtitle: 'Professional whole-house water treatment systems for total home coverage',
-      benefit1Title: 'Total Home Coverage',
-      benefit1Text: 'Clean, filtered water from every faucet, shower, washing machine, dishwasher, and appliance throughout your entire home.',
-      benefit2Title: 'Healthier Living',
-      benefit2Text: 'Remove chlorine, chemicals, sediment, and contaminants for healthier drinking, cooking, and bathing water.',
-      benefit3Title: 'Protect Your Investment',
-      benefit3Text: 'Extend the life of plumbing, appliances, and water heaters by filtering out damaging sediment and mineral deposits.',
+      stats: [
+        { end: 100, suffix: '%', label: 'Home Coverage' },
+        { end: 10, suffix: '+', label: 'Years Experience' },
+        { end: 500, suffix: '+', label: 'Homes Protected' },
+        { end: 24, suffix: '/7', label: 'Support Available' },
+      ],
 
-      // Process Section
-      processLabel: 'Installation Process',
-      processTitle: 'How We Install Your Whole House System',
-      processStep1: 'Home Water Assessment',
-      processDesc1: 'Professional evaluation of your home\'s water quality and plumbing configuration',
-      processStep2: 'System Design',
-      processDesc2: 'Custom filtration system sized for your home\'s flow rate and water issues',
-      processStep3: 'Main Line Installation',
-      processDesc3: 'Expert installation at point-of-entry for complete home coverage',
-      processStep4: 'Filter Maintenance',
-      processDesc4: 'Simple filter changes every 6-12 months to maintain peak performance',
+      benefitsTitle: 'Why Choose',
+      benefitsHighlight: 'Whole House Filtration',
+      benefitsSubtitle: 'Professional whole-house water treatment systems for total home coverage in South Florida',
+      benefits: [
+        {
+          title: 'Total Home Coverage',
+          desc: 'Clean, filtered water from every faucet, shower, washing machine, dishwasher, and appliance throughout your entire home.',
+        },
+        {
+          title: 'Healthier Living',
+          desc: 'Remove chlorine, chemicals, sediment, and contaminants for healthier drinking, cooking, and bathing water throughout your home.',
+        },
+        {
+          title: 'Protect Your Investment',
+          desc: 'Extend the life of plumbing, appliances, and water heaters by filtering out damaging sediment and mineral deposits.',
+        },
+      ],
 
-      // Features Section
-      featuresTitle: 'What Whole House Filtration Removes',
-      featuresSubtitle: 'Multi-stage filtration for comprehensive home water treatment',
-      feature1: 'Chlorine & chloramines (taste, odor & health concerns)',
-      feature2: 'Sediment, sand & rust (protects plumbing & appliances)',
-      feature3: 'VOCs & chemicals (volatile organic compounds)',
-      feature4: 'Bad taste & odors (municipal water treatment byproducts)',
-      feature5: 'Scale & mineral deposits (extends appliance life)',
-      feature6: 'Iron & manganese (stops staining)',
-      feature7: 'Turbidity & cloudiness (clear, clean water)',
-      feature8: 'Disinfection byproducts (THMs & HAAs)',
+      featuresTitle: 'What Whole House Filtration',
+      featuresHighlight: 'Removes',
+      features: [
+        'Chlorine & chloramines (taste, odor & health concerns)',
+        'Sediment, sand & rust (protects plumbing & appliances)',
+        'VOCs & chemicals (volatile organic compounds)',
+        'Bad taste & odors (municipal water treatment byproducts)',
+        'Scale & mineral deposits (extends appliance life)',
+        'Iron & manganese (stops staining on fixtures)',
+        'Turbidity & cloudiness (clear, clean water at every tap)',
+        'Disinfection byproducts (THMs & HAAs)',
+      ],
 
-      // FAQ Section
-      faqLabel: 'Common Questions',
-      faqTitle: 'Whole House Filtration FAQs',
-      faq1Q: 'What is whole house water filtration?',
-      faq1A: 'A whole house water filter (also called point-of-entry or POE system) treats all water entering your home at the main water line. This ensures every tap, shower, and appliance receives filtered water, unlike point-of-use filters that only treat specific faucets.',
-      faq2Q: 'How much does a whole house water filter cost in Florida?',
-      faq2A: 'Whole house filtration systems typically range from $1,200-$3,500 installed, depending on home size and water quality issues. Systems include sediment pre-filter, carbon filter, and optional specialty filters. We offer free quotes and financing options.',
-      faq3Q: 'Will a whole house filter reduce water pressure?',
-      faq3A: 'When properly sized for your home, whole house filters should not noticeably reduce water pressure. We size systems based on your home\'s peak flow rate (typically 10-15 GPM) to maintain adequate pressure throughout your home.',
-      faq4Q: 'How often do whole house filters need replacement?',
-      faq4A: 'Sediment pre-filters: every 3-6 months. Main carbon filter: every 6-12 months. Filter life depends on water quality and usage. We provide maintenance reminders and can handle all filter changes for you.',
+      processTitle: 'Our Simple',
+      processHighlight: '4-Step Process',
+      process: [
+        { number: '01', title: 'Home Water Assessment', desc: 'Professional evaluation of your home\'s water quality and plumbing configuration' },
+        { number: '02', title: 'System Design', desc: 'Custom filtration system sized for your home\'s flow rate and specific water issues' },
+        { number: '03', title: 'Main Line Installation', desc: 'Expert installation at point-of-entry for complete whole-home coverage' },
+        { number: '04', title: 'Filter Maintenance', desc: 'Simple filter changes every 6-12 months to maintain peak performance' },
+      ],
 
-      // CTA Section
-      ctaTitle: 'Ready for Clean Water From Every Tap?',
-      ctaSubtitle: 'Transform your entire South Florida home with professional whole-house filtration',
-      ctaButton: 'Get Your Free Quote Today',
+      faqTitle: 'Frequently Asked',
+      faqHighlight: 'Questions',
+      faqs: [
+        {
+          q: 'What is whole house water filtration?',
+          a: 'A whole house water filter (also called point-of-entry or POE system) treats all water entering your home at the main water line. This ensures every tap, shower, and appliance receives filtered water, unlike point-of-use filters that only treat specific faucets.',
+        },
+        {
+          q: 'How much does a whole house water filter cost in Florida?',
+          a: 'Whole house filtration systems typically range from $1,200-$3,500 installed, depending on home size and water quality issues. Systems include sediment pre-filter, carbon filter, and optional specialty filters. We offer free quotes and financing options.',
+        },
+        {
+          q: 'Will a whole house filter reduce water pressure?',
+          a: 'When properly sized for your home, whole house filters should not noticeably reduce water pressure. We size systems based on your home\'s peak flow rate (typically 10-15 GPM) to maintain adequate pressure throughout your home.',
+        },
+        {
+          q: 'How often do whole house filters need replacement?',
+          a: 'Sediment pre-filters: every 3-6 months. Main carbon filter: every 6-12 months. Filter life depends on water quality and usage. We provide maintenance reminders and can handle all filter changes for you.',
+        },
+      ],
+
+      ctaTitle: 'Ready for Clean Water',
+      ctaHighlight: 'From Every Tap?',
+      ctaSubtitle: 'Transform your entire South Florida home with professional whole-house water filtration',
+      ctaButton: 'Schedule Free Water Test',
     },
     es: {
       badge: 'Protección Completa del Hogar',
-      title: 'Filtración de Agua para Toda la Casa ',
-      highlight: 'Sistemas',
-      subtitle: 'Agua limpia y filtrada en cada grifo, ducha y electrodoméstico de su hogar en el sur de Florida. Filtración integral en el punto de entrada elimina cloro, sedimentos, químicos y contaminantes en toda su casa. Proteja a su familia y extienda la vida de los electrodomésticos.',
-      cta1: 'Análisis de Agua Gratis',
-      cta2: 'Llamar (305) 467-1525',
+      title: 'Filtración para',
+      titleHighlight: 'Toda la Casa',
+      subtitle: 'Agua limpia y filtrada en cada grifo, ducha y electrodoméstico de su hogar en el sur de Florida. Filtración integral en el punto de entrada elimina cloro, sedimentos, químicos y contaminantes en toda su casa.',
+      ctaPrimary: 'Análisis de Agua Gratis',
+      ctaSecondary: 'Llamar (305) 467-1525',
 
-      // Benefits Section
-      benefitsLabel: 'Cada Grifo Protegido',
-      benefitsTitle: 'Filtración de Agua Completa del Hogar para Florida',
-      benefitsSubtitle: 'Sistemas profesionales de tratamiento de agua para toda la casa para cobertura total',
-      benefit1Title: 'Cobertura Total del Hogar',
-      benefit1Text: 'Agua limpia y filtrada en cada grifo, ducha, lavadora, lavavajillas y electrodoméstico en toda su casa.',
-      benefit2Title: 'Vida Más Saludable',
-      benefit2Text: 'Elimine cloro, químicos, sedimentos y contaminantes para agua más saludable para beber, cocinar y bañarse.',
-      benefit3Title: 'Proteja Su Inversión',
-      benefit3Text: 'Extienda la vida de tuberías, electrodomésticos y calentadores de agua filtrando sedimentos dañinos y depósitos minerales.',
+      stats: [
+        { end: 100, suffix: '%', label: 'Cobertura del Hogar' },
+        { end: 10, suffix: '+', label: 'Años Experiencia' },
+        { end: 500, suffix: '+', label: 'Hogares Protegidos' },
+        { end: 24, suffix: '/7', label: 'Soporte Disponible' },
+      ],
 
-      // Process Section
-      processLabel: 'Proceso de Instalación',
-      processTitle: 'Cómo Instalamos Su Sistema para Toda la Casa',
-      processStep1: 'Evaluación del Agua del Hogar',
-      processDesc1: 'Evaluación profesional de la calidad del agua y configuración de tuberías de su hogar',
-      processStep2: 'Diseño del Sistema',
-      processDesc2: 'Sistema de filtración personalizado dimensionado para el flujo y problemas de agua de su hogar',
-      processStep3: 'Instalación en Línea Principal',
-      processDesc3: 'Instalación experta en el punto de entrada para cobertura completa del hogar',
-      processStep4: 'Mantenimiento de Filtros',
-      processDesc4: 'Cambios simples de filtros cada 6-12 meses para mantener el máximo rendimiento',
+      benefitsTitle: 'Por Qué Elegir',
+      benefitsHighlight: 'Filtración para Toda la Casa',
+      benefitsSubtitle: 'Sistemas profesionales de tratamiento de agua para cobertura total del hogar en el sur de Florida',
+      benefits: [
+        {
+          title: 'Cobertura Total del Hogar',
+          desc: 'Agua limpia y filtrada en cada grifo, ducha, lavadora, lavavajillas y electrodoméstico en toda su casa.',
+        },
+        {
+          title: 'Vida Más Saludable',
+          desc: 'Elimine cloro, químicos, sedimentos y contaminantes para agua más saludable para beber, cocinar y bañarse en toda su casa.',
+        },
+        {
+          title: 'Proteja Su Inversión',
+          desc: 'Extienda la vida de tuberías, electrodomésticos y calentadores de agua filtrando sedimentos dañinos y depósitos minerales.',
+        },
+      ],
 
-      // Features Section
-      featuresTitle: 'Lo Que Elimina la Filtración para Toda la Casa',
-      featuresSubtitle: 'Filtración de múltiples etapas para tratamiento integral del agua del hogar',
-      feature1: 'Cloro y cloraminas (sabor, olor y preocupaciones de salud)',
-      feature2: 'Sedimentos, arena y óxido (protege tuberías y electrodomésticos)',
-      feature3: 'COVs y químicos (compuestos orgánicos volátiles)',
-      feature4: 'Mal sabor y olores (subproductos del tratamiento de agua municipal)',
-      feature5: 'Depósitos de sarro y minerales (extiende vida de electrodomésticos)',
-      feature6: 'Hierro y manganeso (detiene manchas)',
-      feature7: 'Turbidez y nubosidad (agua clara y limpia)',
-      feature8: 'Subproductos de desinfección (THMs y HAAs)',
+      featuresTitle: 'Lo Que Elimina la Filtración',
+      featuresHighlight: 'para Toda la Casa',
+      features: [
+        'Cloro y cloraminas (sabor, olor y preocupaciones de salud)',
+        'Sedimentos, arena y óxido (protege tuberías y electrodomésticos)',
+        'COVs y químicos (compuestos orgánicos volátiles)',
+        'Mal sabor y olores (subproductos del tratamiento municipal)',
+        'Depósitos de sarro y minerales (extiende vida de electrodomésticos)',
+        'Hierro y manganeso (detiene manchas en accesorios)',
+        'Turbidez y nubosidad (agua clara y limpia en cada grifo)',
+        'Subproductos de desinfección (THMs y HAAs)',
+      ],
 
-      // FAQ Section
-      faqLabel: 'Preguntas Frecuentes',
-      faqTitle: 'Preguntas Sobre Filtración para Toda la Casa',
-      faq1Q: '¿Qué es la filtración de agua para toda la casa?',
-      faq1A: 'Un filtro de agua para toda la casa (también llamado sistema de punto de entrada o POE) trata toda el agua que entra a su hogar en la línea de agua principal. Esto asegura que cada grifo, ducha y electrodoméstico reciba agua filtrada, a diferencia de los filtros de punto de uso que solo tratan grifos específicos.',
-      faq2Q: '¿Cuánto cuesta un filtro de agua para toda la casa en Florida?',
-      faq2A: 'Los sistemas de filtración para toda la casa típicamente varían de $1,200 a $3,500 instalados, dependiendo del tamaño del hogar y problemas de calidad del agua. Los sistemas incluyen prefiltro de sedimentos, filtro de carbón y filtros especiales opcionales. Ofrecemos cotizaciones gratuitas y opciones de financiamiento.',
-      faq3Q: '¿Un filtro para toda la casa reducirá la presión del agua?',
-      faq3A: 'Cuando se dimensiona adecuadamente para su hogar, los filtros para toda la casa no deben reducir notablemente la presión del agua. Dimensionamos los sistemas según el flujo máximo de su hogar (típicamente 10-15 GPM) para mantener una presión adecuada en toda su casa.',
-      faq4Q: '¿Con qué frecuencia necesitan reemplazo los filtros para toda la casa?',
-      faq4A: 'Prefiltros de sedimentos: cada 3-6 meses. Filtro principal de carbón: cada 6-12 meses. La vida del filtro depende de la calidad del agua y el uso. Proporcionamos recordatorios de mantenimiento y podemos manejar todos los cambios de filtro por usted.',
+      processTitle: 'Nuestro Simple',
+      processHighlight: 'Proceso de 4 Pasos',
+      process: [
+        { number: '01', title: 'Evaluación del Agua del Hogar', desc: 'Evaluación profesional de la calidad del agua y configuración de tuberías de su hogar' },
+        { number: '02', title: 'Diseño del Sistema', desc: 'Sistema de filtración personalizado dimensionado para el flujo y problemas de agua de su hogar' },
+        { number: '03', title: 'Instalación en Línea Principal', desc: 'Instalación experta en el punto de entrada para cobertura completa del hogar' },
+        { number: '04', title: 'Mantenimiento de Filtros', desc: 'Cambios simples de filtros cada 6-12 meses para mantener el máximo rendimiento' },
+      ],
 
-      // CTA Section
-      ctaTitle: '¿Listo Para Agua Limpia en Cada Grifo?',
+      faqTitle: 'Preguntas',
+      faqHighlight: 'Frecuentes',
+      faqs: [
+        {
+          q: '¿Qué es la filtración de agua para toda la casa?',
+          a: 'Un filtro de agua para toda la casa (también llamado sistema de punto de entrada o POE) trata toda el agua que entra a su hogar en la línea principal. Esto asegura que cada grifo, ducha y electrodoméstico reciba agua filtrada, a diferencia de los filtros de punto de uso que solo tratan grifos específicos.',
+        },
+        {
+          q: '¿Cuánto cuesta un filtro de agua para toda la casa en Florida?',
+          a: 'Los sistemas de filtración para toda la casa típicamente varían de $1,200 a $3,500 instalados, dependiendo del tamaño del hogar y problemas de calidad del agua. Los sistemas incluyen prefiltro de sedimentos, filtro de carbón y filtros especiales opcionales. Ofrecemos cotizaciones gratuitas y opciones de financiamiento.',
+        },
+        {
+          q: '¿Un filtro para toda la casa reducirá la presión del agua?',
+          a: 'Cuando se dimensiona adecuadamente para su hogar, los filtros para toda la casa no deben reducir notablemente la presión del agua. Dimensionamos los sistemas según el flujo máximo de su hogar (típicamente 10-15 GPM) para mantener una presión adecuada en toda su casa.',
+        },
+        {
+          q: '¿Con qué frecuencia necesitan reemplazo los filtros para toda la casa?',
+          a: 'Prefiltros de sedimentos: cada 3-6 meses. Filtro principal de carbón: cada 6-12 meses. La vida del filtro depende de la calidad del agua y el uso. Proporcionamos recordatorios de mantenimiento y podemos manejar todos los cambios de filtro por usted.',
+        },
+      ],
+
+      ctaTitle: '¿Listo Para Agua Limpia',
+      ctaHighlight: 'en Cada Grifo?',
       ctaSubtitle: 'Transforme todo su hogar en el sur de Florida con filtración profesional para toda la casa',
-      ctaButton: 'Obtenga Su Cotización Gratuita Hoy',
+      ctaButton: 'Programar Análisis Gratuito',
     },
   };
 
@@ -202,8 +245,7 @@ export default function WholeHouseFiltrationPage({ params: { locale } }: PagePro
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Service',
-            name: locale === 'en' ? 'Whole House Water Filtration Systems' : 'Sistemas de Filtración de Agua para Toda la Casa',
-            description: t.subtitle,
+            name: locale === 'en' ? 'Whole House Water Filtration Systems Florida' : 'Sistemas de Filtración de Agua para Toda la Casa Florida',
             provider: {
               '@type': 'Organization',
               name: 'Aquaionic',
@@ -216,6 +258,7 @@ export default function WholeHouseFiltrationPage({ params: { locale } }: PagePro
               { '@type': 'City', name: 'Fort Lauderdale' },
               { '@type': 'City', name: 'West Palm Beach' },
             ],
+            description: t.subtitle,
             serviceType: 'Whole House Water Filtration',
           }),
         }}
@@ -228,306 +271,279 @@ export default function WholeHouseFiltrationPage({ params: { locale } }: PagePro
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: t.faq1Q,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: t.faq1A,
-                },
+            mainEntity: t.faqs.map(faq => ({
+              '@type': 'Question',
+              name: faq.q,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.a,
               },
-              {
-                '@type': 'Question',
-                name: t.faq2Q,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: t.faq2A,
-                },
-              },
-              {
-                '@type': 'Question',
-                name: t.faq3Q,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: t.faq3A,
-                },
-              },
-              {
-                '@type': 'Question',
-                name: t.faq4Q,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: t.faq4A,
-                },
-              },
-            ],
+            })),
           }),
         }}
       />
 
-      <div className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative py-16 md:py-20 bg-gradient-to-br from-deep-blue via-ocean to-cyan overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
-          <div className="absolute top-20 left-10 w-72 h-72 bg-cyan/30 rounded-full blur-3xl animate-drift"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-green/20 rounded-full blur-3xl animate-drift-reverse"></div>
-
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto text-center text-white">
-              <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-md rounded-full mb-6 animate-fade-in">
-                <span className="text-sm font-semibold">{t.badge}</span>
-              </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-jakarta font-extrabold mb-6 animate-fade-up">
-                {t.title}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-accent-green">
-                  {t.highlight}
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-cyan-50 mb-8 leading-relaxed animate-fade-up" style={{ animationDelay: '0.1s' }}>
-                {t.subtitle}
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.2s' }}>
-                <a href="#contact" className="btn-primary bg-white text-ocean hover:bg-cyan-50 hover:shadow-2xl">
-                  {t.cta1}
-                </a>
-                <a href="tel:+13054671525" className="btn-secondary border-white text-white hover:bg-white hover:text-ocean">
-                  {t.cta2}
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="section-padding bg-ghost">
-          <div className="container-custom">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="section-label">{t.benefitsLabel}</span>
-              <h2 className="text-4xl md:text-5xl font-jakarta font-extrabold text-deep-blue mb-4">
-                {t.benefitsTitle}
-              </h2>
-              <p className="text-lg md:text-xl text-text-mid">
-                {t.benefitsSubtitle}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Benefit 1 */}
-              <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan to-ocean rounded-2xl flex items-center justify-center mb-6 shadow-cyan">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
+      {/* Hero Section */}
+      <section className="relative min-h-[85vh] flex items-center bg-white pt-[72px]">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-16 md:py-16">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Column */}
+            <div>
+              <ScrollReveal>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan/10 border border-cyan/20 text-[13px] font-semibold text-cyan mb-8">
+                  {t.badge}
                 </div>
-                <h3 className="text-2xl font-jakarta font-bold text-deep-blue mb-3">
-                  {t.benefit1Title}
-                </h3>
-                <p className="text-text-mid leading-relaxed">
-                  {t.benefit1Text}
-                </p>
-              </div>
+              </ScrollReveal>
 
-              {/* Benefit 2 */}
-              <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-16 h-16 bg-gradient-to-br from-accent-green to-cyan rounded-2xl flex items-center justify-center mb-6 shadow-cyan">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
+              <ScrollReveal delay={0.1}>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-jakarta font-bold text-deep-blue mb-6 leading-tight tracking-tight">
+                  {t.title}
+                  <br />
+                  <span className="text-cyan">{t.titleHighlight}</span>
+                </h1>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.15}>
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mb-10">
+                  {t.subtitle}
+                </p>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.2}>
+                <div className="flex flex-wrap gap-4 mb-16">
+                  <Link
+                    href="#contact"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-cyan text-white font-semibold text-[15px] rounded-xl hover:bg-cyan-soft transition-colors duration-200 animate-breathe"
+                  >
+                    {t.ctaPrimary}
+                    <ArrowRight size={18} strokeWidth={2.5} />
+                  </Link>
+
+                  <a
+                    href="tel:+13054671525"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-transparent border-2 border-gray-200 text-deep-blue font-semibold text-[15px] rounded-xl hover:border-cyan hover:text-cyan transition-colors duration-200"
+                  >
+                    {t.ctaSecondary}
+                  </a>
                 </div>
-                <h3 className="text-2xl font-jakarta font-bold text-deep-blue mb-3">
-                  {t.benefit2Title}
-                </h3>
-                <p className="text-text-mid leading-relaxed">
-                  {t.benefit2Text}
-                </p>
-              </div>
+              </ScrollReveal>
 
-              {/* Benefit 3 */}
-              <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-16 h-16 bg-gradient-to-br from-ocean to-deep-blue rounded-2xl flex items-center justify-center mb-6 shadow-cyan">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-jakarta font-bold text-deep-blue mb-3">
-                  {t.benefit3Title}
-                </h3>
-                <p className="text-text-mid leading-relaxed">
-                  {t.benefit3Text}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="section-padding">
-          <div className="container-custom">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-jakarta font-extrabold text-deep-blue mb-4">
-                  {t.featuresTitle}
-                </h2>
-                <p className="text-lg text-text-mid mb-8">
-                  {t.featuresSubtitle}
-                </p>
-                <ul className="space-y-4">
-                  {[t.feature1, t.feature2, t.feature3, t.feature4, t.feature5, t.feature6, t.feature7, t.feature8].map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-accent-green flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-lg text-text-mid">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-cyan-100 to-white rounded-3xl p-12 backdrop-blur-sm border-2 border-cyan/30 shadow-xl">
-                  <div className="h-full flex items-center justify-center text-center">
-                    <div>
-                      <div className="text-8xl mb-4 animate-float">🏠</div>
-                      <div className="text-6xl font-jakarta font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-deep-blue to-cyan mb-2">
-                        100%
+              <ScrollReveal delay={0.25}>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                  {t.stats.map((stat, i) => (
+                    <div key={i} className="text-center sm:text-left">
+                      <div className="text-3xl md:text-4xl font-jakarta font-extrabold text-deep-blue tracking-tight">
+                        <AnimatedCounter end={stat.end} suffix={stat.suffix} />
                       </div>
-                      <div className="text-xl font-semibold text-ocean">
-                        {locale === 'en' ? 'Home Coverage' : 'Cobertura Hogar'}
+                      <div className="text-[11px] font-semibold text-text-light uppercase tracking-[0.08em] mt-1">
+                        {stat.label}
                       </div>
                     </div>
+                  ))}
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Right Column - Image */}
+            <ScrollReveal delay={0.2} className="hidden lg:block">
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
+                <Image
+                  src="/images/services/water-testing.jpg"
+                  alt="Whole house water filtration system"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 0vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep-blue/60 via-transparent to-transparent" />
+
+                <div className="absolute top-6 right-6 bg-white rounded-2xl px-5 py-3 shadow-md flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-cyan animate-pulse" />
+                  <span className="text-sm font-semibold text-deep-blue">
+                    {locale === 'en' ? '100% Home Coverage' : 'Cobertura Total'}
+                  </span>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Bar */}
+      <section className="py-8 md:py-10 bg-ghost">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Droplets, label: locale === 'en' ? 'Free Water Analysis' : 'Análisis de Agua Gratis' },
+              { icon: ShieldCheck, label: locale === 'en' ? 'NSF & FDA Certified' : 'Certificado NSF y FDA' },
+              { icon: Wrench, label: locale === 'en' ? 'Professional Installation' : 'Instalación Profesional' },
+              { icon: CheckCircle, label: locale === 'en' ? 'Lifetime Support' : 'Soporte de Por Vida' },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="group flex flex-col items-center gap-3 p-6 rounded-2xl bg-white border border-gray-100 hover:border-cyan/30 hover:shadow-md transition-all duration-200"
+              >
+                <div className="w-14 h-14 rounded-xl bg-cyan/10 flex items-center justify-center group-hover:bg-cyan/15 transition-colors duration-200">
+                  <item.icon size={24} className="text-cyan" strokeWidth={2} />
+                </div>
+                <span className="text-[13px] font-semibold text-deep-blue text-center leading-tight">
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12 md:mb-14">
+            <ScrollReveal>
+              <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-deep-blue mb-4 tracking-tight">
+                {t.benefitsTitle}{' '}
+                <span className="text-cyan">{t.benefitsHighlight}</span>
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <p className="text-[17px] text-gray-600 leading-relaxed">
+                {t.benefitsSubtitle}
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {t.benefits.map((benefit, i) => (
+              <ScrollReveal key={i} delay={i * 0.08}>
+                <div className="h-full bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-gray-200 transition-colors duration-200 p-7">
+                  <div className="w-12 h-12 rounded-xl bg-cyan/10 flex items-center justify-center mb-5">
+                    <CheckCircle size={22} className="text-cyan" strokeWidth={2.5} />
                   </div>
-                </div>
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent-green/20 rounded-full blur-xl" />
-                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-cyan/20 rounded-full blur-xl" />
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Process Section */}
-        <section className="section-padding bg-white">
-          <div className="container-custom">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="section-label">{t.processLabel}</span>
-              <h2 className="text-4xl md:text-5xl font-jakarta font-extrabold text-deep-blue">
-                {t.processTitle}
+                  <h3 className="text-[19px] font-jakarta font-bold text-deep-blue mb-3 tracking-tight">
+                    {benefit.title}
+                  </h3>
+
+                  <p className="text-[14.5px] text-gray-600 leading-relaxed">
+                    {benefit.desc}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <ScrollReveal>
+              <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-deep-blue mb-4 tracking-tight">
+                {t.featuresTitle}{' '}
+                <span className="text-cyan">{t.featuresHighlight}</span>
               </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="relative group">
-                <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-cyan to-transparent" />
-                <div className="bg-ghost rounded-2xl p-8 h-full border border-border hover:border-cyan hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl font-jakarta font-extrabold text-cyan/30 mb-4">01</div>
-                  <h3 className="text-xl font-jakarta font-bold text-deep-blue mb-2">
-                    {t.processStep1}
-                  </h3>
-                  <p className="text-text-mid">{t.processDesc1}</p>
-                </div>
-              </div>
-
-              <div className="relative group">
-                <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-cyan to-transparent" />
-                <div className="bg-ghost rounded-2xl p-8 h-full border border-border hover:border-cyan hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl font-jakarta font-extrabold text-cyan/30 mb-4">02</div>
-                  <h3 className="text-xl font-jakarta font-bold text-deep-blue mb-2">
-                    {t.processStep2}
-                  </h3>
-                  <p className="text-text-mid">{t.processDesc2}</p>
-                </div>
-              </div>
-
-              <div className="relative group">
-                <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-cyan to-transparent" />
-                <div className="bg-ghost rounded-2xl p-8 h-full border border-border hover:border-cyan hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl font-jakarta font-extrabold text-cyan/30 mb-4">03</div>
-                  <h3 className="text-xl font-jakarta font-bold text-deep-blue mb-2">
-                    {t.processStep3}
-                  </h3>
-                  <p className="text-text-mid">{t.processDesc3}</p>
-                </div>
-              </div>
-
-              <div className="relative group">
-                <div className="bg-ghost rounded-2xl p-8 h-full border border-border hover:border-cyan hover:shadow-lg transition-all duration-300">
-                  <div className="text-4xl font-jakarta font-extrabold text-cyan/30 mb-4">04</div>
-                  <h3 className="text-xl font-jakarta font-bold text-deep-blue mb-2">
-                    {t.processStep4}
-                  </h3>
-                  <p className="text-text-mid">{t.processDesc4}</p>
-                </div>
-              </div>
-            </div>
+            </ScrollReveal>
           </div>
-        </section>
 
-        {/* FAQ Section */}
-        <section className="section-padding bg-ghost">
-          <div className="container-custom">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="section-label">{t.faqLabel}</span>
-              <h2 className="text-4xl md:text-5xl font-jakarta font-extrabold text-deep-blue">
-                {t.faqTitle}
+          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {t.features.map((feature, i) => (
+              <ScrollReveal key={i} delay={i * 0.05}>
+                <div className="flex items-start gap-3 p-5 bg-white rounded-xl border border-gray-100">
+                  <CheckCircle size={20} className="text-cyan flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                  <span className="text-[14.5px] text-gray-600 leading-relaxed">{feature}</span>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <ScrollReveal>
+              <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-deep-blue mb-4 tracking-tight">
+                {t.processTitle}{' '}
+                <span className="text-cyan">{t.processHighlight}</span>
               </h2>
-            </div>
-
-            <div className="max-w-4xl mx-auto space-y-6">
-              <div className="bg-white rounded-2xl p-8 border border-border hover:border-cyan transition-all duration-300">
-                <h3 className="text-xl font-jakarta font-bold text-deep-blue mb-3">
-                  {t.faq1Q}
-                </h3>
-                <p className="text-text-mid leading-relaxed">
-                  {t.faq1A}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 border border-border hover:border-cyan transition-all duration-300">
-                <h3 className="text-xl font-jakarta font-bold text-deep-blue mb-3">
-                  {t.faq2Q}
-                </h3>
-                <p className="text-text-mid leading-relaxed">
-                  {t.faq2A}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 border border-border hover:border-cyan transition-all duration-300">
-                <h3 className="text-xl font-jakarta font-bold text-deep-blue mb-3">
-                  {t.faq3Q}
-                </h3>
-                <p className="text-text-mid leading-relaxed">
-                  {t.faq3A}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 border border-border hover:border-cyan transition-all duration-300">
-                <h3 className="text-xl font-jakarta font-bold text-deep-blue mb-3">
-                  {t.faq4Q}
-                </h3>
-                <p className="text-text-mid leading-relaxed">
-                  {t.faq4A}
-                </p>
-              </div>
-            </div>
+            </ScrollReveal>
           </div>
-        </section>
 
-        {/* CTA Section */}
-        <section className="section-padding bg-gradient-to-br from-deep-blue via-ocean to-cyan text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-accent-green/20 rounded-full blur-3xl" />
-          <div className="container-custom text-center relative z-10">
-            <h2 className="text-4xl md:text-5xl font-jakarta font-extrabold mb-6">
-              {t.ctaTitle}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {t.process.map((step, i) => (
+              <ScrollReveal key={i} delay={i * 0.08}>
+                <div className="bg-white rounded-2xl border border-gray-100 p-7 hover:border-gray-200 transition-colors duration-200">
+                  <div className="text-5xl font-jakarta font-extrabold text-cyan/20 mb-4">
+                    {step.number}
+                  </div>
+                  <h3 className="text-[17px] font-jakarta font-bold text-deep-blue mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-[14px] text-gray-600 leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <ScrollReveal>
+              <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-deep-blue mb-4 tracking-tight">
+                {t.faqTitle}{' '}
+                <span className="text-cyan">{t.faqHighlight}</span>
+              </h2>
+            </ScrollReveal>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {t.faqs.map((faq, i) => (
+              <ScrollReveal key={i} delay={i * 0.06}>
+                <div className="bg-white rounded-2xl border border-gray-100 p-7 hover:border-gray-200 transition-colors duration-200">
+                  <h3 className="text-[17px] font-jakarta font-bold text-deep-blue mb-3">
+                    {faq.q}
+                  </h3>
+                  <p className="text-[14.5px] text-gray-600 leading-relaxed">
+                    {faq.a}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-deep-blue to-ocean text-white">
+        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollReveal>
+            <h2 className="text-4xl md:text-5xl font-jakarta font-bold mb-4 tracking-tight">
+              {t.ctaTitle}{' '}
+              <span className="text-cyan-soft">{t.ctaHighlight}</span>
             </h2>
-            <p className="text-xl md:text-2xl text-cyan-50 mb-8 max-w-2xl mx-auto">
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
               {t.ctaSubtitle}
             </p>
-            <a href="#contact" className="btn-primary bg-white text-ocean hover:bg-cyan-50 hover:shadow-2xl text-lg px-8 py-4 animate-breathe">
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <Link
+              href="#contact"
+              className="inline-flex items-center gap-2.5 px-8 py-4 bg-white text-deep-blue font-semibold text-[15px] rounded-xl hover:bg-cyan-soft hover:text-white transition-all duration-200 animate-breathe"
+            >
               {t.ctaButton}
-            </a>
-          </div>
-        </section>
-      </div>
+              <ArrowRight size={18} strokeWidth={2.5} />
+            </Link>
+          </ScrollReveal>
+        </div>
+      </section>
     </>
   );
 }
