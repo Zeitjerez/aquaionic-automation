@@ -73,6 +73,10 @@ export const routing = defineRouting({
       en: '/privacy-policy',
       es: '/politica-de-privacidad',
     },
+    '/contact': {
+      en: '/contact',
+      es: '/contacto',
+    },
   },
 });
 

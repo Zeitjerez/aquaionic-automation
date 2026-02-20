@@ -45,56 +45,78 @@ export default async function LocaleLayout({
   // Get messages for the locale
   const messages = await getMessages();
 
-  const localBusinessSchema = {
+  const siteSchema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': 'https://aquaionic.us/#business',
-    name: 'Aquaionic',
-    description:
-      'Professional water purification systems for South Florida homes. Well water treatment, reverse osmosis, whole house filtration. NSF/FDA certified.',
-    url: 'https://aquaionic.us',
-    telephone: '+13054671525',
-    email: 'info@aquaionic.us',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Boca Raton',
-      addressRegion: 'FL',
-      addressCountry: 'US',
-    },
-    areaServed: [
-      { '@type': 'City', name: 'Miami' },
-      { '@type': 'City', name: 'Boca Raton' },
-      { '@type': 'City', name: 'Fort Lauderdale' },
-      { '@type': 'City', name: 'West Palm Beach' },
-    ],
-    knowsAbout: [
-      'Well Water Treatment',
-      'Reverse Osmosis Systems',
-      'Whole House Water Filtration',
-      'Iron and Sulfur Removal',
-      'Hard Water Solutions',
-      'Water Purification Florida',
-    ],
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Water Purification Services',
-      itemListElement: [
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Well Water Treatment' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Reverse Osmosis Systems' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Whole House Filtration' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Iron & Sulfur Removal' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hard Water Solutions' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'City Water Purification' } },
-      ],
-    },
-    sameAs: ['https://aquaionic.us'],
-    priceRange: '$$',
-    openingHoursSpecification: [
+    '@graph': [
       {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:00',
-        closes: '18:00',
+        '@type': 'LocalBusiness',
+        '@id': 'https://aquaionic.us/#business',
+        name: 'Aquaionic',
+        url: 'https://aquaionic.us/en/',
+        logo: 'https://aquaionic.us/images/logo.png',
+        description:
+          'Professional water purification systems for South Florida homes. NSF/FDA certified. Well water treatment, reverse osmosis, whole house filtration.',
+        telephone: '+13054671525',
+        priceRange: '$',
+        address: {
+          '@type': 'PostalAddress',
+          addressRegion: 'FL',
+          addressCountry: 'US',
+        },
+        areaServed: ['Miami', 'Boca Raton', 'Fort Lauderdale', 'Palm Beach'],
+        sameAs: [],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Water Treatment Services',
+          itemListElement: [
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Well Water Treatment' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Reverse Osmosis Systems' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Whole House Filtration' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Iron & Sulfur Removal' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hard Water Solutions' } },
+          ],
+        },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://aquaionic.us/#website',
+        url: 'https://aquaionic.us/en/',
+        name: 'Aquaionic',
+        inLanguage: ['en-US', 'es-ES'],
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://aquaionic.us/en/?s={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'What water problems are common in South Florida?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'South Florida homes commonly experience iron and sulfur in well water, hard water with high calcium and magnesium, chlorine in city water, and bacterial contamination. Aquaionic provides NSF/FDA certified systems to solve all these issues.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Do you offer free water testing in Miami, Boca Raton and Fort Lauderdale?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes. Aquaionic offers free water analysis for homes in Miami, Boca Raton, Fort Lauderdale, and Palm Beach. Call (305) 467-1525 or submit the form on our website.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Are your water purification systems NSF and FDA certified?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes. All Aquaionic water purification systems are NSF and FDA certified, ensuring they meet the highest standards for contaminant removal and water safety.',
+            },
+          },
+        ],
       },
     ],
   };
@@ -104,7 +126,7 @@ export default async function LocaleLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
         />
       </head>
       <body className="font-dm">
