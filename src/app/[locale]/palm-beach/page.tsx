@@ -176,6 +176,21 @@ export default function PalmBeachPage({ params: { locale } }: PageProps) {
         }}
       />
 
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aquaionic.us/en/' },
+              { '@type': 'ListItem', position: 2, name: 'Palm Beach', item: 'https://aquaionic.us/en/palm-beach/' },
+            ],
+          }),
+        }}
+      />
+
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center bg-white pt-[72px]">
         <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-16 md:py-16">
