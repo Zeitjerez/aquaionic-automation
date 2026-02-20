@@ -21,7 +21,7 @@ const nextConfig = {
   // Redirect root / → /en (middleware handles locale, but vercel.json catch-all can block it)
   async redirects() {
     return [
-      { source: '/', destination: '/en', permanent: false },
+      { source: '/', destination: '/en', permanent: true },
     ];
   },
 

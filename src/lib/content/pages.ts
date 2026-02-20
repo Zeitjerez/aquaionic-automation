@@ -133,11 +133,11 @@ export const pagesMetadata: PagesData = {
     },
   },
   es: {
-    inicio: {
+    home: {
       title: 'Sistemas de Purificación de Agua Florida | Aquaionic',
       description: 'Sistemas profesionales de purificación de agua para hogares en el sur de Florida. Tratamiento de agua de pozo, ósmosis inversa, filtración completa. Certificados NSF/FDA. Análisis de agua gratuito en Miami, Boca Raton, Fort Lauderdale.',
       keywords: 'purificación de agua Florida',
-      canonical: 'https://aquaionic.us/es/inicio/',
+      canonical: 'https://aquaionic.us/es/',
     },
     'tratamiento-agua-de-pozo': {
       title: 'Tratamiento de Agua de Pozo Florida | Aquaionic',
@@ -175,29 +175,29 @@ export const pagesMetadata: PagesData = {
       keywords: 'purificación agua municipal Florida',
       canonical: 'https://aquaionic.us/es/purificacion-agua-ciudad/',
     },
-    'miami-es': {
+    miami: {
       title: 'Purificación de Agua Miami FL | Tratamiento Profesional',
       description: 'Servicios profesionales de purificación de agua en Miami, FL. Tratamiento de agua de pozo, ósmosis inversa, filtración completa. 10+ años sirviendo al condado de Miami-Dade. Análisis gratuito.',
       keywords: 'purificación agua Miami',
-      canonical: 'https://aquaionic.us/es/miami-es/',
+      canonical: 'https://aquaionic.us/es/miami/',
     },
-    'boca-raton-es': {
+    'boca-raton': {
       title: 'Purificación de Agua Boca Raton FL | Aquaionic',
       description: 'Expertos en purificación de agua en Boca Raton, FL. Elimine agua dura, cloro, hierro y contaminantes. Sirviendo al condado de Palm Beach desde 2010. Sistemas certificados NSF. Análisis gratuito.',
       keywords: 'purificación agua Boca Raton',
-      canonical: 'https://aquaionic.us/es/boca-raton-es/',
+      canonical: 'https://aquaionic.us/es/boca-raton/',
     },
-    'fort-lauderdale-es': {
+    'fort-lauderdale': {
       title: 'Purificación de Agua Fort Lauderdale FL | Aquaionic',
       description: 'Tratamiento profesional de agua en Fort Lauderdale, FL. Purificación de agua de pozo y municipal. Elimine hierro, azufre, agua dura. Sirviendo al condado de Broward. Análisis gratuito.',
       keywords: 'purificación agua Fort Lauderdale',
-      canonical: 'https://aquaionic.us/es/fort-lauderdale-es/',
+      canonical: 'https://aquaionic.us/es/fort-lauderdale/',
     },
-    'palm-beach-es': {
+    'palm-beach': {
       title: 'Purificación de Agua Palm Beach FL | Tratamiento de Pozo',
       description: 'Expertos en purificación de agua en Palm Beach, FL. Tratamiento de agua de pozo, ósmosis inversa, ablandadores. Sirviendo hogares en el condado de Palm Beach. Certificado NSF. Análisis gratuito.',
       keywords: 'purificación agua Palm Beach',
-      canonical: 'https://aquaionic.us/es/palm-beach-es/',
+      canonical: 'https://aquaionic.us/es/palm-beach/',
     },
     nosotros: {
       title: 'Sobre Aquaionic | Expertos en Purificación Florida',
